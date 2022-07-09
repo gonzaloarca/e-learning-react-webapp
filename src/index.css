@@ -1,5 +1,6 @@
 @tailwind base;
 @tailwind utilities;
+@import '~antd/dist/antd.css';
 
 body {
   margin: 0;
