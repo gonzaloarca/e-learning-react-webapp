@@ -7,6 +7,7 @@ import {
 } from '@ant-design/icons';
 import Menu, { MenuProps } from 'antd/lib/menu';
 import React from 'react';
+import { Props } from '../utils/types';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -50,12 +51,11 @@ const items: MenuItem[] = [
 	),
 ];
 
-type Props = {};
 
 const SideMenu = (props: Props) => {
 	return (
 		<Menu
-			style={{ width: 256 }}
+			// style={{ width: 256 }}
 			defaultSelectedKeys={['1']}
 			defaultOpenKeys={['sub1']}
 			mode='vertical'

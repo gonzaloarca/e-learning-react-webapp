@@ -1,23 +1,9 @@
-import { Layout } from 'antd';
-import React from 'react';
-import SideMenu from '../SideMenu';
-import styles from './App.module.scss';
+import Router from '../Router';
 
-const { Header, Footer, Sider, Content } = Layout;
-
-function App() {
+const App = () => {
 	return (
-		<Layout>
-			<Header>Header</Header>
-			<Layout>
-				<Sider>
-					<SideMenu />
-				</Sider>
-				<Content>Content</Content>
-			</Layout>
-			<Footer>Footer</Footer>
-		</Layout>
+		<Router />
 	);
-}
+};
 
 export default App;
