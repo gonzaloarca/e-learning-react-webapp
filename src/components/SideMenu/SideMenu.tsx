@@ -26,9 +26,9 @@ function getItem(
 }
 
 const items: MenuItem[] = [
-	getItem('Navigation One', '1', <MailOutlined />),
-	getItem('Navigation Two', '2', <CalendarOutlined />),
-	getItem('Navigation Two', 'sub1', <AppstoreOutlined />, [
+	getItem('My Courses', '1', <MailOutlined />),
+	getItem('My Teaching', '2', <CalendarOutlined />),
+	getItem('Messages', 'sub1', <AppstoreOutlined />, [
 		getItem('Option 3', '3'),
 		getItem('Option 4', '4'),
 		getItem('Submenu', 'sub1-2', null, [
@@ -36,7 +36,7 @@ const items: MenuItem[] = [
 			getItem('Option 6', '6'),
 		]),
 	]),
-	getItem('Navigation Three', 'sub2', <SettingOutlined />, [
+	getItem('Settings', 'sub2', <SettingOutlined />, [
 		getItem('Option 7', '7'),
 		getItem('Option 8', '8'),
 		getItem('Option 9', '9'),
