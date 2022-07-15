@@ -1,6 +1,14 @@
 const Routes = {
-    Courses: {
+    Landing: {
         path: "/",
+    },
+    Courses: {
+        path: "/courses",
+    },
+    Cognito: {
+        path: "/cognito",
+        callbackUrl: "/cognito/callback",
+        logoutUrl: "/cognito/logout",
     }
 };
 
