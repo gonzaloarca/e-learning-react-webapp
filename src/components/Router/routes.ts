@@ -1,6 +1,7 @@
 const Routes = {
     Landing: {
         path: "/",
+        chooseRole: "/choose-role",
     },
     Courses: {
         path: "/courses",

@@ -12,7 +12,9 @@ const Landing = () => {
             </Header>
             <Content>
                 <Banner />
+                {/* TODO: add some statistics about the site or some benefits of using it */}
             </Content>
+            {/* TODO: add footer */}
         </Layout>
     );
 };
