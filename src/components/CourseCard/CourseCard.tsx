@@ -1,4 +1,4 @@
-import styles from '../../assets/styles/Courses.module.scss';
+import styles from '../../assets/styles/CourseCard.module.scss';
 import { Card } from 'antd';
 import clsx from 'clsx';
 const { Meta } = Card;
@@ -25,15 +25,18 @@ export type CourseCardProps = {
 const CourseCard = (props: CourseCardProps) => {
 	const { name, professor, image, attendance, status } = props;
 	return (
-		<Card
-			className={clsx(styles.CourseCard)}
-			cover={<img alt='example' src={image} />}
-		>
-			<Meta
-				title={name}
-				description={`${professor} - ${attendance} - ${status}`}
-			/>
-		</Card>
+		<div className={styles.cardContainer}>
+			<div className={styles.cardPrimary}>
+				<img alt='example' src={image} className={styles.cardImage} />
+				<div className={styles.cardPrimaryTitles}>
+					<div className={styles.cardTitle}>{name}</div>
+					<div className={styles.cardSubtitle}></div>
+				</div>
+			</div>
+			<div className={styles.cardSecondary}>
+				{`${professor} - ${attendance} - ${status}`}
+			</div>
+		</div>
 	);
 };
 

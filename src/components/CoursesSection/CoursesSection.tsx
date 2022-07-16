@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { CourseModel } from '../../services/courses';
 import CourseCard from '../CourseCard';
-import styles from '../../assets/styles/Courses.module.scss';
+import styles from '../../assets/styles/CoursesSection.module.scss';
 import { Col, Row } from 'antd';
 
 export type CoursesSectionProps = {
@@ -14,7 +14,7 @@ const CoursesSection = (props: CoursesSectionProps) => {
 	return (
 		<div className={clsx(styles.CoursesSection)}>
 			<h1>{sectionTitle}</h1>
-			<Row gutter={16}>
+			<Row className={styles.CoursesSectionContent} gutter={16}>
 				{courses.map(course => {
 					return (
 						<Col key={course.id} span={6}>

@@ -1,0 +1,53 @@
+.cardContainer {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    border-radius: 15px;
+}
+
+.cardPrimary {
+    position: relative;
+    height: 80%;
+    width: 100%;
+}
+
+.cardImage {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.cardPrimaryTitles {
+    position: absolute;
+    z-index: 1;
+    background: linear-gradient(0, rgba(0,0,0, 0.7), rgba(0, 0, 0, 0));   
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.cardTitle {
+    display: -webkit-box;
+    font-size: 1rem;
+    font-weight: bold;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+}
+
+.cardSubtitle {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+}
+
+.cardSecondary {
+
+}
+
