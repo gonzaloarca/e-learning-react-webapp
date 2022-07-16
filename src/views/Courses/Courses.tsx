@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import CoursesService, { CourseModel } from '../../services/courses';
-import Layout from '../../components/Layout';
+import OmniLayout from '../../components/OmniLayout';
 import CoursesSection from '../../components/CoursesSection/CoursesSection';
 
 const Courses = () => {
@@ -11,7 +11,7 @@ const Courses = () => {
 	}, []);
 
 	return (
-		<Layout>
+		<OmniLayout>
 			<CoursesSection
 				courses={recentlyWatched}
 				sectionTitle='Recently Watched'
@@ -20,7 +20,7 @@ const Courses = () => {
 				courses={recentlyWatched}
 				sectionTitle='Recently Watched'
 			/>
-		</Layout>
+		</OmniLayout>
 	);
 };
 

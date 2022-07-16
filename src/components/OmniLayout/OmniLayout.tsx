@@ -1,8 +1,9 @@
 import { Layout } from 'antd';
 import clsx from 'clsx';
-import SideMenu from "../SideMenu";
-import { Props } from "../utils/types";
+import SideMenu from '../SideMenu';
+import { Props } from '../utils/types';
 import styles from '../../App.module.scss';
+import Navbar from '../Navbar';
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -11,7 +12,9 @@ const OmniLayout = (props: Props) => {
 
 	return (
 		<Layout>
-			<Header>Header</Header>
+			<Header>
+				<Navbar />
+			</Header>
 			<Layout>
 				<Sider>
 					<SideMenu />
