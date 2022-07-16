@@ -1,5 +1,5 @@
-import { CourseAttendance } from './../components/Courses/CourseCard';
-import { CourseStatus } from '../components/Courses/CourseCard';
+import { CourseAttendance } from '../components/CourseCard/CourseCard';
+import { CourseStatus } from '../components/CourseCard/CourseCard';
 
 export type CourseModel = {
 	id: number;
