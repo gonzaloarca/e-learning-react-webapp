@@ -54,7 +54,6 @@ const SideMenu = (props: Props) => {
 	];
 
 	const onSelectItem: MenuProps['onClick'] = (e) => {
-		console.log("clicked", e.key)
 		setSelectedKey(e.key);
 	};
 
