@@ -17,22 +17,23 @@
 	object-fit: cover;
 }
 
-.courseInfo {
+.courseInfoContainer {
 	position: absolute;
-	top: 0;
-	left: 0;
-	width: calc(100% - $navbar-width);
+	width: 100%;
 	height: 100%;
 	z-index: 1;
-	backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px) brightness(0.8);
+	display: flex;
+	justify-content: center;
+}
+
+.courseInfo {
+	width: calc(100% - $navbar-width);
+	height: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
 	align-items: flex-start;
-	left: 0;
-	right: 0;
-	margin-left: auto;
-	margin-right: auto;
 }
 
 .courseName {
@@ -43,7 +44,7 @@
 }
 
 .courseOwner {
-	font-size: 1.5rem;
+	font-size: 1.3rem;
 	font-weight: 600;
 	color: #fff;
 }
