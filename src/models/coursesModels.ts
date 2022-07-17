@@ -19,24 +19,17 @@ export type CourseApiModel = {
 	image: string;
 };
 
-export enum IncludePoliciesApiModel {
-	Forums = 'Forums',
-	LiveLectures = 'Live Lectures',
-	LiveExams = 'Live Exams',
-	GradedAssignments = 'Graded Assignments',
-	HoursOfOnDemandVideo = 'Hours of On-Demand Video',
-	OneOnOneMeetings = 'One-on-One Meetings (paid)',
-}
-
 export type CourseOverviewApiModel = {
-	id: string;
-	name: string;
-	description: string;
+	data: CourseApiModel;
 	owner: UserApiModel;
-	image: string;
 	numberOfStudents: number;
 	numberOfTeachers: number;
 	lastUpdated: string;
 	learnings: string[];
-	includes: IncludePoliciesApiModel[];
 };
+
+export type CourseCreationOmniModel = {
+	name: string;
+	description: string;
+	image: string;
+}
