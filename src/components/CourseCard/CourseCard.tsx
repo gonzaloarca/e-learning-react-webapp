@@ -1,7 +1,6 @@
 import styles from '../../assets/styles/CourseCard.module.scss';
-import { Card } from 'antd';
 import clsx from 'clsx';
-const { Meta } = Card;
+import { FaUserAlt } from 'react-icons/fa';
 
 export enum CourseStatus {
 	UP_TO_DATE = 'Up to date',
@@ -30,12 +29,13 @@ const CourseCard = (props: CourseCardProps) => {
 				<img alt='example' src={image} className={styles.cardImage} />
 				<div className={styles.cardPrimaryTitles}>
 					<div className={styles.cardTitle}>{name}</div>
-					<div className={styles.cardSubtitle}></div>
+					<div className={styles.cardSubtitle}>
+						<FaUserAlt className='mr-2' />
+						<div className={styles.professorName}>{professor}</div>
+					</div>
 				</div>
 			</div>
-			<div className={styles.cardSecondary}>
-				{`${professor} - ${attendance} - ${status}`}
-			</div>
+			<div className={styles.cardSecondary}>{`${attendance} - ${status}`}</div>
 		</div>
 	);
 };

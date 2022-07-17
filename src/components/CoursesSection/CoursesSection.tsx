@@ -13,7 +13,7 @@ const CoursesSection = (props: CoursesSectionProps) => {
 	const { courses, sectionTitle } = props;
 	return (
 		<div className={clsx(styles.CoursesSection)}>
-			<h1>{sectionTitle}</h1>
+			<h2>{sectionTitle}</h2>
 			<Row className={styles.CoursesSectionContent} gutter={16}>
 				{courses.map(course => {
 					return (

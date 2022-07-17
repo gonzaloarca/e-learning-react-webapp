@@ -1,0 +1,22 @@
+$primary-1: #001531;
+$primary-2: #001a3e;
+$primary-3: #253b5a;
+$primary-4: #1d304a;
+$navbar-width: 200px;
+$navbar-height: 64px;
+
+.contentContainer {
+	width: calc(100% - $navbar-width);
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 2rem;
+}
+
+:export {
+	primary1: $primary-1;
+	primary2: $primary-2;
+	primary3: $primary-3;
+	primary4: $primary-4;
+	navbarWidth: $navbar-width;
+	navbarHeight: $navbar-height;
+}
