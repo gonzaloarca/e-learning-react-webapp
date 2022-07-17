@@ -1,8 +1,8 @@
 import clsx from 'clsx';
-import { CourseApiModel } from '../../services/courses';
 import CourseCard from '../CourseCard';
 import styles from '../../assets/styles/CoursesSection.module.scss';
 import { Col, Row } from 'antd';
+import { CourseApiModel } from '../../models/coursesModels';
 
 export type CoursesSectionProps = {
 	courses: CourseApiModel[];

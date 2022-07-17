@@ -1,4 +1,4 @@
-import { ContactApiModel } from "../../services/messages";
+import { ContactApiModel } from "../../models/messagesModels";
 import MessageContactCard from "../MessageContactCard/MessageContactCard";
 
 type MessagesContactsProps = {

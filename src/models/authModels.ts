@@ -13,3 +13,9 @@ export type AuthApiModel = {
 	image: string;
 	token: string;
 };
+
+export type User = {
+	id: string;
+	name: string;
+	avatarUrl: string;
+};

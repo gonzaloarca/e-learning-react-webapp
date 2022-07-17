@@ -1,4 +1,4 @@
-import { User } from './auth';
+import { CourseApiModel } from '../models/coursesModels';
 import omniAxios, { HttpMethods } from './axios';
 
 const CoursesRoutes = {
@@ -6,46 +6,6 @@ const CoursesRoutes = {
 	byId: (id: string) => `/courses/${id}`,
 };
 
-export enum CourseStatusApiModel {
-	UP_TO_DATE = 'Up to date',
-	ENDED = 'Ended',
-	IN_PROGRESS = 'In progress',
-}
-
-export type CourseAttendanceApiModel = {
-	percentageCompleted: number;
-	minutesLeft: number;
-};
-
-export type CourseApiModel = {
-	id: string;
-	name: string;
-	description: string;
-	owner: string;
-	image: string;
-};
-
-export enum IncludePoliciesApiModel {
-	Forums = 'Forums',
-	LiveLectures = 'Live Lectures',
-	LiveExams = 'Live Exams',
-	GradedAssignments = 'Graded Assignments',
-	HoursOfOnDemandVideo = 'Hours of On-Demand Video',
-	OneOnOneMeetings = 'One-on-One Meetings (paid)',
-}
-
-export type CourseOverviewApiModel = {
-	id: string;
-	name: string;
-	description: string;
-	owner: User;
-	image: string;
-	numberOfStudents: number;
-	numberOfTeachers: number;
-	lastUpdated: string;
-	learnings: string[];
-	includes: IncludePoliciesApiModel[];
-};
 
 const datasource: CourseApiModel[] = [
 	{

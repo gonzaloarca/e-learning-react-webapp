@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import CoursesService, { CourseApiModel } from '../../services/courses';
+import CoursesService from '../../services/courses';
 import CoursesSection from '../../components/CoursesSection/CoursesSection';
 import globalStyles from '../../assets/styles/GlobalTheme.module.scss';
 import clsx from 'clsx';
+import { CourseApiModel } from '../../models/coursesModels';
 
 const MyCourses = () => {
 	const [recentlyWatched, setRecentlyWatched] = useState<CourseApiModel[]>([]);
