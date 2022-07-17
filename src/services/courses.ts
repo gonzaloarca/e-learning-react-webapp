@@ -26,6 +26,33 @@ const datasource: CourseApiModel[] = [
 		image:
 			'https://images.unsplash.com/photo-1445620466293-d6316372ab59?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Y29tcHV0ZXIlMjBzY2llbmR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
 	},
+	{
+		id: '3',
+		name: 'Machine Learning',
+		description:
+			'This course is designed to give students a basic understanding of the fundamental concepts of machine learning.',
+		owner: 'Dr. John Smith',
+		image:
+			'https://images.unsplash.com/photo-1445620466293-d6316372ab59?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Y29tcHV0ZXIlMjBzY2llbmR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+	},
+	{
+		id: '4',
+		name: 'Machine Learning',
+		description:
+			'This course is designed to give students a basic understanding of the fundamental concepts of machine learning.',
+		owner: 'Dr. John Smith',
+		image:
+			'https://images.unsplash.com/photo-1445620466293-d6316372ab59?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Y29tcHV0ZXIlMjBzY2llbmR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+	},
+	{
+		id: '5',
+		name: 'Machine Learning',
+		description:
+			'This course is designed to give students a basic understanding of the fundamental concepts of machine learning.',
+		owner: 'Dr. John Smith',
+		image:
+			'https://images.unsplash.com/photo-1445620466293-d6316372ab59?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Y29tcHV0ZXIlMjBzY2llbmR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+	},
 ];
 
 const CoursesService = {
