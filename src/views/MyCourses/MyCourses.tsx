@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import CoursesService, { CourseApiModel } from '../../services/courses';
 import CoursesSection from '../../components/CoursesSection/CoursesSection';
+import globalStyles from '../../assets/styles/GlobalTheme.module.scss';
+import clsx from 'clsx';
 
-const Courses = () => {
+const MyCourses = () => {
 	const [recentlyWatched, setRecentlyWatched] = useState<CourseApiModel[]>([]);
 
 	useEffect(() => {
@@ -10,7 +12,7 @@ const Courses = () => {
 	}, []);
 
 	return (
-		<>
+		<div className={clsx(globalStyles.contentContainer)}>
 			<h1>My Courses</h1>
 			<CoursesSection
 				courses={recentlyWatched}
@@ -20,8 +22,8 @@ const Courses = () => {
 				courses={recentlyWatched}
 				sectionTitle='Recently Watched'
 			/>
-		</>
+		</div>
 	);
 };
 
-export default Courses;
+export default MyCourses;

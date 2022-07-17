@@ -5,7 +5,7 @@ const MessagesRoutes = {
 };
 
 export type ContactApiModel = {
-	id: number;
+	id: string;
 	name: string;
 	email: string;
 	lastMessage: string;
@@ -17,7 +17,7 @@ export type ContactApiModel = {
 
 const datasource = [
 	{
-		id: 1,
+		id: '1',
 		name: 'Jane Doe',
 		email: 'jdoe@gmail.com',
 		lastMessage: 'Hello!',
@@ -28,7 +28,7 @@ const datasource = [
 			'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
 	},
 	{
-		id: 2,
+		id: '2',
 		name: 'John Claude',
 		email: 'jclaude@gmail.com',
 		lastMessage: 'Bye!',

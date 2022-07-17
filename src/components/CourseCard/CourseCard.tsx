@@ -10,7 +10,7 @@ export type CourseCardProps = {
 };
 
 const CourseCard = (props: CourseCardProps) => {
-	const { name, professor, image, attendance, status, id } = props?.course;
+	const { name, owner, image, id } = props?.course;
 	const navigate = useNavigate();
 
 	const handleClick = useCallback(() => {
@@ -25,11 +25,11 @@ const CourseCard = (props: CourseCardProps) => {
 					<div className={styles.cardTitle}>{name}</div>
 					<div className={styles.cardSubtitle}>
 						<FaUserAlt className='mr-2' />
-						<div className={styles.professorName}>{professor}</div>
+						<div className={styles.professorName}>{owner}</div>
 					</div>
 				</div>
 			</div>
-			<div className={styles.cardSecondary}>{`${attendance} - ${status}`}</div>
+			<div className={styles.cardSecondary}></div>
 		</div>
 	);
 };

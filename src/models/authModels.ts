@@ -5,11 +5,11 @@ export enum Role {
 }
 
 export type AuthApiModel = {
-	id: number;
-    firstName: string;
-    lastName: string;
-    email: string;
+	id: string;
+	firstName: string;
+	lastName: string;
+	email: string;
 	role: Role;
-    image: string;
-    token: string;
+	image: string;
+	token: string;
 };

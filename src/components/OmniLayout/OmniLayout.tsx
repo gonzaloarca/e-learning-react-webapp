@@ -45,7 +45,7 @@ const OmniLayout = (props: Props) => {
 						marginTop: globalStyles.navbarHeight,
 					}}
 				>
-					<Content className={clsx(globalStyles.contentContainer)}>
+					<Content>
 						<Outlet />
 					</Content>
 					<Footer>Footer</Footer>

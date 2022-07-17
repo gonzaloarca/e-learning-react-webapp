@@ -14,7 +14,7 @@ const Navbar = () => {
 			<img
 				className={styles.navbarLogo}
 				alt='omni logo'
-				src='img/omni-logo-white-2.svg'
+				src='/img/omni-logo-white2.svg'
 			/>
 			<Button onClick={navigateToLogin}>Go to the platform</Button>
 		</div>
