@@ -22,6 +22,7 @@ const ROLE = "OMNI_ROLE";
 export const getRole = () => {
     const role = localStorage.getItem(ROLE);
     if(!role) {
+        return Role.NONE;
         throw new Error('Role not found');
     }
     return role;
