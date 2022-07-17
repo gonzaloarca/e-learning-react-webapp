@@ -31,5 +31,5 @@ export type CourseOverviewApiModel = {
 export type CourseCreationOmniModel = {
 	name: string;
 	description: string;
-	image: string;
+	images: File[];
 }
