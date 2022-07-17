@@ -7,18 +7,19 @@ import { Col, Row } from 'antd';
 export type CoursesSectionProps = {
 	courses: CourseApiModel[];
 	sectionTitle: string;
+	className?: string;
 };
 
 const CoursesSection = (props: CoursesSectionProps) => {
-	const { courses, sectionTitle } = props;
+	const { courses, sectionTitle, className } = props;
 	return (
-		<div className={clsx(styles.CoursesSection)}>
-			<h2>{sectionTitle}</h2>
-			<Row className={styles.CoursesSectionContent} gutter={16}>
+		<div className={clsx(styles.coursesSection, className)}>
+			<h2 className={clsx(styles.coursesSectionTitle)}>{sectionTitle}</h2>
+			<Row className={styles.coursesSectionContent} gutter={16}>
 				{courses.map(course => {
 					return (
 						<Col key={course.id} span={6}>
-							<CourseCard {...course} />
+							<CourseCard course={course} />
 						</Col>
 					);
 				})}

@@ -1,9 +1,16 @@
-.CoursesSection {
-    height: 30vh;
+$content-height: 85%;
+
+.coursesSection {
+	height: 35vh;
 }
 
-.CoursesSectionContent {
-    display: flex;
-    width: inherit;
-    height: 90%;
+.coursesSectionContent {
+	display: flex;
+	width: inherit;
+	height: $content-height;
+	padding-bottom: 3rem;
+}
+
+.coursesSectionTitle {
+	height: calc(100% - $content-height);
 }

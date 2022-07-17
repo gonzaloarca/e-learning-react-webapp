@@ -8,6 +8,15 @@ $card-border-radius: 20px;
 	display: inline-block;
 	border-radius: $card-border-radius;
 	background-color: $primary-5;
+	cursor: pointer;
+
+	&:hover {
+		background-color: lighten($primary-5, 5%);
+		// width: 110%;
+		// height: 110%;
+		transform: translate3D(0, -1px, 0) scale(1.05);
+		transition: all 0.2s ease-in-out;
+	}
 }
 
 .cardPrimary {

@@ -1,6 +1,9 @@
 import styles from '../../assets/styles/CourseCard.module.scss';
 import clsx from 'clsx';
 import { FaUserAlt } from 'react-icons/fa';
+import { useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { CourseApiModel } from '../../services/courses';
 
 export enum CourseStatus {
 	UP_TO_DATE = 'Up to date',
@@ -14,17 +17,19 @@ export type CourseAttendance = {
 };
 
 export type CourseCardProps = {
-	name: string;
-	professor: string;
-	image: string;
-	attendance: CourseAttendance;
-	status: CourseStatus;
+	course: CourseApiModel;
 };
 
 const CourseCard = (props: CourseCardProps) => {
-	const { name, professor, image, attendance, status } = props;
+	const { name, professor, image, attendance, status, id } = props?.course;
+	const navigate = useNavigate();
+
+	const handleClick = useCallback(() => {
+		navigate(`/courses/${id}`);
+	}, [id, navigate]);
+
 	return (
-		<div className={styles.cardContainer}>
+		<div className={styles.cardContainer} onClick={handleClick}>
 			<div className={styles.cardPrimary}>
 				<img alt='example' src={image} className={styles.cardImage} />
 				<div className={styles.cardPrimaryTitles}>
