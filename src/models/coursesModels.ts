@@ -1,16 +1,5 @@
 import { UserApiModel } from './usersModels';
 
-export enum CourseStatusApiModel {
-	UP_TO_DATE = 'Up to date',
-	ENDED = 'Ended',
-	IN_PROGRESS = 'In progress',
-}
-
-export type CourseAttendanceApiModel = {
-	percentageCompleted: number;
-	minutesLeft: number;
-};
-
 export type CourseApiModel = {
 	id: string;
 	name: string;
