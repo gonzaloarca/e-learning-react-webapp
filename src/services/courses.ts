@@ -1,5 +1,3 @@
-import { CourseAttendance } from '../components/CourseCard/CourseCard';
-import { CourseStatus } from '../components/CourseCard/CourseCard';
 import omniAxios, { HttpMethods } from './axios';
 
 const CoursesRoutes = {
@@ -7,14 +5,47 @@ const CoursesRoutes = {
 	byId: (id: number) => `/courses/${id}`,
 }
 
+export enum CourseStatusApiModel {
+	UP_TO_DATE = 'Up to date',
+	ENDED = 'Ended',
+	IN_PROGRESS = 'In progress',
+}
+
+export type CourseAttendanceApiModel = {
+	percentageCompleted: number;
+	minutesLeft: number;
+};
+
 export type CourseApiModel = {
 	id: number;
 	name: string;
 	description: string;
 	professor: string;
 	image: string;
-	status: CourseStatus;
-	attendance: CourseAttendance;
+	status: CourseStatusApiModel;
+	attendance: CourseAttendanceApiModel;
+};
+
+export enum IncludePoliciesApiModel {
+	Forums = 'Forums',
+	LiveLectures = 'Live Lectures',
+	LiveExams = 'Live Exams',
+	GradedAssignments = 'Graded Assignments',
+	HoursOfOnDemandVideo = 'Hours of On-Demand Video',
+	OneOnOneMeetings = 'One-on-One Meetings (paid)',
+}
+
+export type CourseOverviewApiModel = {
+	id: number;
+	name: string;
+	description: string;
+	professor: string;
+	image: string;
+	numberOfStudents: number;
+	numberOfTeachers: number;
+	lastUpdated: string;
+	learnings: string[];
+	includes: IncludePoliciesApiModel[];
 };
 
 const datasource: CourseApiModel[] = [
@@ -26,7 +57,7 @@ const datasource: CourseApiModel[] = [
 		professor: 'Dr. John Smith',
 		image:
 			'https://images.unsplash.com/photo-1452457750107-cd084dce177d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y29tcHV0ZXIlMjBzY2llbmR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
-		status: CourseStatus.IN_PROGRESS,
+		status: CourseStatusApiModel.IN_PROGRESS,
 		attendance: {
 			percentageCompleted: 0.5,
 			minutesLeft: 10,
@@ -40,7 +71,7 @@ const datasource: CourseApiModel[] = [
 		professor: 'Dr. John Smith',
 		image:
 			'https://images.unsplash.com/photo-1445620466293-d6316372ab59?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Y29tcHV0ZXIlMjBzY2llbmR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
-		status: CourseStatus.IN_PROGRESS,
+		status: CourseStatusApiModel.IN_PROGRESS,
 		attendance: {
 			percentageCompleted: 0.5,
 			minutesLeft: 10,

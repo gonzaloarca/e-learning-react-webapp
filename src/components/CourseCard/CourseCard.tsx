@@ -5,17 +5,6 @@ import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CourseApiModel } from '../../services/courses';
 
-export enum CourseStatus {
-	UP_TO_DATE = 'Up to date',
-	ENDED = 'Ended',
-	IN_PROGRESS = 'In progress',
-}
-
-export type CourseAttendance = {
-	percentageCompleted: number;
-	minutesLeft: number;
-};
-
 export type CourseCardProps = {
 	course: CourseApiModel;
 };
