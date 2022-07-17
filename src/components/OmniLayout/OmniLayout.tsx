@@ -4,10 +4,7 @@ import SideMenu from '../SideMenu';
 import { Props } from '../utils/types';
 import Navbar from '../Navbar';
 import globalStyles from '../../assets/styles/GlobalTheme.module.scss';
-import { Outlet, Route, Router, Routes } from 'react-router-dom';
-import OmniRoutes from '../../routes/routes';
-import Messages from '../../views/Messages';
-import Courses from '../../views/Courses';
+import { Outlet } from 'react-router-dom';
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -23,6 +20,8 @@ const OmniLayout = (props: Props) => {
 					zIndex: 1000,
 					height: globalStyles.navbarHeight,
 					padding: 0,
+					background: globalStyles.primary2,
+					borderBottom: `1px solid rgba(255, 255, 255, 0.24)`,
 				}}
 			>
 				<Navbar />
@@ -35,6 +34,7 @@ const OmniLayout = (props: Props) => {
 						width: globalStyles.navbarWidth,
 						zIndex: 1000,
 						marginTop: globalStyles.navbarHeight,
+						background: globalStyles.primary4,
 					}}
 				>
 					<SideMenu />

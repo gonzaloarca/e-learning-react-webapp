@@ -13,6 +13,7 @@ module.exports = {
 								// '@primary-color': '#1DA57A',
 								dark: true,
 							}),
+							'@body-background': '#001531',
 						},
 						javascriptEnabled: true,
 					},

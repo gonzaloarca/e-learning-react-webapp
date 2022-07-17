@@ -12,6 +12,7 @@ import { Role } from '../../models/authModels';
 import Routes from '../../routes/routes';
 import { getRole } from '../utils/session';
 import { Props } from '../utils/types';
+import globalStyles from '../../assets/styles/GlobalTheme.module.scss';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -77,13 +78,13 @@ const SideMenu = (props: Props) => {
 
 	return (
 		<Menu
-			// style={{ width: 256 }}
 			// defaultSelectedKeys={["1"]}
 			selectedKeys={selectedKey}
 			// defaultOpenKeys={['sub1']}
 			mode='vertical'
 			theme='dark'
 			items={items}
+			style={{ backgroundColor: globalStyles.primary4 }}
 		/>
 	);
 };
