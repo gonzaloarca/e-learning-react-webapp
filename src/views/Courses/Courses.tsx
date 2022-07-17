@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import CoursesService, { CourseModel } from '../../services/courses';
+import CoursesService, { CourseApiModel } from '../../services/courses';
 import OmniLayout from '../../components/OmniLayout';
 import CoursesSection from '../../components/CoursesSection/CoursesSection';
 
 const Courses = () => {
-	const [recentlyWatched, setRecentlyWatched] = useState<CourseModel[]>([]);
+	const [recentlyWatched, setRecentlyWatched] = useState<CourseApiModel[]>([]);
 
 	useEffect(() => {
 		CoursesService.getRecentlyWatched().then(setRecentlyWatched);

@@ -10,7 +10,7 @@ export enum HttpMethods {
 };
 
 const axiosClient = axios.create({
-    baseURL: 'http://localhost:3000',
+    baseURL: "https://jsonplaceholder.typicode.com/todos/1",
     headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
@@ -30,7 +30,7 @@ const omniAxios = async <T>(url: string, data: any, method: HttpMethods, authent
 
         const response = await axiosClient({
             method,
-            url,
+            // url, // TODO: when back is up, uncomment this line
             data,
             headers,
         });
