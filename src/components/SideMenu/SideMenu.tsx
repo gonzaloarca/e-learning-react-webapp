@@ -1,5 +1,5 @@
 import {
-	MailOutlined,
+	MessageOutlined,
 	CalendarOutlined,
 	AppstoreOutlined,
 	SettingOutlined,
@@ -38,7 +38,7 @@ const SideMenu = (props: Props) => {
 		getItem(
 			renderLinkItem('My Courses', Routes.Courses.path),
 			Routes.Courses.id,
-			<MailOutlined />
+			<AppstoreOutlined />
 		),
 		getRole() === Role.PROFESSOR
 			? getItem('My Teaching', Routes.Teaching.id, <CalendarOutlined />)
@@ -46,16 +46,9 @@ const SideMenu = (props: Props) => {
 		getItem(
 			renderLinkItem('Messages', Routes.Messages.path),
 			Routes.Messages.id,
-			<AppstoreOutlined />
+			<MessageOutlined />
 		),
-		getItem('Settings', Routes.Settings.id, <SettingOutlined />),
-		getItem(
-			<a href='https://ant.design' target='_blank' rel='noopener noreferrer'>
-				Ant Design
-			</a>,
-			'link',
-			<LinkOutlined />
-		),
+		getItem('Account Settings', Routes.AccountSettings.id, <SettingOutlined />),
 	];
 
 	const location = useLocation();
@@ -67,8 +60,8 @@ const SideMenu = (props: Props) => {
 				return [Routes.Courses.id];
 			case Routes.Messages.id:
 				return [Routes.Messages.id];
-			case Routes.Settings.id:
-				return [Routes.Settings.id];
+			case Routes.AccountSettings.id:
+				return [Routes.AccountSettings.id];
 			case Routes.Teaching.id:
 				return [Routes.Teaching.id];
 			default:

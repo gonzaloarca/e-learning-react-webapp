@@ -8,6 +8,10 @@ const Routes = {
 		id: 'courses',
 		path: 'courses',
 	},
+	Course: {
+		id: 'courses',
+		path: 'courses/:id',
+	},
 	Cognito: {
 		id: 'cognito',
 		path: '/cognito',
@@ -18,13 +22,21 @@ const Routes = {
 		id: 'messages',
 		path: 'messages',
 	},
-	Settings: {
-		id: 'settings',
-		path: 'settings',
+	AccountSettings: {
+		id: 'accountSettings',
+		path: 'account',
+	},
+	Profile: {
+		id: 'profile',
+		path: 'user/:id',
 	},
 	Teaching: {
 		id: 'teaching',
 		path: 'teaching',
+	},
+	PageNotFound: {
+		id: '404',
+		path: '/404',
 	},
 };
 

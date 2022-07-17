@@ -25,7 +25,7 @@ const CourseCard = (props: CourseCardProps) => {
 	const navigate = useNavigate();
 
 	const handleClick = useCallback(() => {
-		navigate(`/courses/${id}`);
+		navigate(`${id}`);
 	}, [id, navigate]);
 
 	return (
