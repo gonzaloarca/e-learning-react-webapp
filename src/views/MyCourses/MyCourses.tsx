@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import CoursesService from '../../services/courses';
 import CoursesSection from '../../components/CoursesSection/CoursesSection';
 import globalStyles from '../../assets/styles/GlobalTheme.module.scss';

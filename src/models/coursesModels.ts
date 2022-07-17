@@ -1,4 +1,4 @@
-import { User } from "./authModels";
+import { UserApiModel } from './usersModels';
 
 export enum CourseStatusApiModel {
 	UP_TO_DATE = 'Up to date',
@@ -32,7 +32,7 @@ export type CourseOverviewApiModel = {
 	id: string;
 	name: string;
 	description: string;
-	owner: User;
+	owner: UserApiModel;
 	image: string;
 	numberOfStudents: number;
 	numberOfTeachers: number;

@@ -1,9 +1,12 @@
 import { Button, Col, Row } from 'antd';
 import { useState } from 'react';
+import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
-import { Role } from '../../models/authModels';
+import { Role } from '../../models/usersModels';
 import Routes from '../../routes/routes';
+import UsersService from '../../services/users';
 import RoleCard from '../RoleCard';
+import { setRole } from '../utils/session';
 
 const ChooseRole = () => {
 	const [selectedRole, setSelectedRole] = useState<Role | undefined>(undefined);
@@ -14,9 +17,19 @@ const ChooseRole = () => {
 
 	const navigate = useNavigate();
 
-	const onClickContinue = async () => {
-		// TODO: send role to API
-		navigate(Routes.Courses.path);
+	const { mutate } = useMutation(UsersService.chooseRole, {
+		onSuccess: () => {
+			navigate(Routes.Courses.path);
+		},
+		onError: () => {
+			navigate(Routes.Landing.path);
+		},
+	});
+
+
+	const onClickContinue = () => {
+		setRole(selectedRole!);
+		mutate(selectedRole!);
 	};
 
 	return (

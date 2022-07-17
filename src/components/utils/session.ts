@@ -1,4 +1,5 @@
-import { Role } from './../../models/authModels';
+import { Role } from "../../models/usersModels";
+
 const SESSION_KEY = 'OMNI_SESSION';
 
 export const getSession = () => {
