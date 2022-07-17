@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useQueryParams from "../../hooks/queryParamsHook";
 import { Role } from "../../models/authModels";
+import Routes from "../../routes/routes";
 import AuthService from "../../services/auth";
 import { setRole, setSession } from "../utils/session";
 
@@ -17,9 +18,9 @@ const CognitoCallback = () => {
                 setSession(auth.token);
                 setRole(auth.role);
                 if(auth.role === Role.NONE) {
-                    navigate("/landing");
+                    navigate(Routes.Landing.chooseRole);
                 } else {
-                    navigate("/");
+                    navigate(Routes.Courses.path);
                 }
             });
         }
