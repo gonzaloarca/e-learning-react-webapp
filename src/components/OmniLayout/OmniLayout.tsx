@@ -2,9 +2,12 @@ import { Layout } from 'antd';
 import clsx from 'clsx';
 import SideMenu from '../SideMenu';
 import { Props } from '../utils/types';
-import styles from '../../assets/styles/App.module.scss';
 import Navbar from '../Navbar';
 import globalStyles from '../../assets/styles/GlobalTheme.module.scss';
+import { Outlet, Route, Router, Routes } from 'react-router-dom';
+import OmniRoutes from '../../routes/routes';
+import Messages from '../../views/Messages';
+import Courses from '../../views/Courses';
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -43,7 +46,7 @@ const OmniLayout = (props: Props) => {
 					}}
 				>
 					<Content className={clsx(globalStyles.contentContainer)}>
-						{children}
+						<Outlet />
 					</Content>
 					<Footer>Footer</Footer>
 				</Layout>
