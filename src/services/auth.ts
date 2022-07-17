@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { AuthApiModel } from '../models/authModels';
 import omniAxios, { HttpMethods } from './axios';
 

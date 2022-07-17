@@ -5,8 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import { Role } from '../../models/usersModels';
 import Routes from '../../routes/routes';
 import UsersService from '../../services/users';
-import RoleCard from '../RoleCard';
-import { setRole } from '../utils/session';
+import RoleCard from '../../components/RoleCard';
+import { setRole } from '../../components/utils/session';
 
 const ChooseRole = () => {
 	const [selectedRole, setSelectedRole] = useState<Role | undefined>(undefined);

@@ -4,7 +4,7 @@ import {
 	Route,
 	Navigate,
 } from 'react-router-dom';
-import ChooseRole from '../../components/ChooseRole';
+import ChooseRole from '../../views/ChooseRole';
 import CognitoCallback from '../../components/CognitoCallback';
 import OmniLayout from '../../components/OmniLayout';
 import Course from '../../views/Course';
