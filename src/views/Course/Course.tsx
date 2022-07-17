@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useQuery, useQueryClient } from 'react-query';
 import { useParams } from 'react-router-dom';
 import CourseHeader from '../../components/CourseHeader';
-import CoursesService, { CourseApiModel } from '../../services/courses';
+import { CourseApiModel } from '../../models/coursesModels';
+import CoursesService from '../../services/courses';
 
 type Props = {};
 

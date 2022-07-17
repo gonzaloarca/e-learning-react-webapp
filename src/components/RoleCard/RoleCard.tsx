@@ -1,5 +1,5 @@
 import { Card } from "antd";
-import { Role } from "../../models/authModels";
+import { Role } from "../../models/usersModels";
 const { Meta } = Card;
 
 export type RoleCardProps = {

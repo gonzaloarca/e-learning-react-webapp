@@ -8,11 +8,11 @@ import {
 import Menu, { MenuProps } from 'antd/lib/menu';
 import React, { useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Role } from '../../models/authModels';
 import Routes from '../../routes/routes';
 import { getRole } from '../utils/session';
 import { Props } from '../utils/types';
 import globalStyles from '../../assets/styles/GlobalTheme.module.scss';
+import { Role } from '../../models/usersModels';
 
 type MenuItem = Required<MenuProps>['items'][number];
 

@@ -18,7 +18,7 @@ const axiosClient = axios.create({
     timeout: 10000,
 });
 
-const omniAxios = async <T>(url: string, data: any, method: HttpMethods, authenticated: boolean = false) => {
+const omniAxios = async <T>(url: string, data: Object, method: HttpMethods, authenticated: boolean = false) => {
     const headers: any = {};
 
     if (authenticated) {

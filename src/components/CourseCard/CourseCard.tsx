@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { FaUserAlt } from 'react-icons/fa';
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CourseApiModel } from '../../services/courses';
+import { CourseApiModel } from '../../models/coursesModels';
 
 export type CourseCardProps = {
 	course: CourseApiModel;

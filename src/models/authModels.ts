@@ -1,15 +1,6 @@
-export enum Role {
-	PROFESSOR = 'PROFESSOR',
-	STUDENT = 'STUDENT',
-	NONE = 'NONE',
-}
+import { UserApiModel } from './usersModels';
 
 export type AuthApiModel = {
-	id: string;
-	firstName: string;
-	lastName: string;
-	email: string;
-	role: Role;
-	image: string;
+	user: UserApiModel;
 	token: string;
 };

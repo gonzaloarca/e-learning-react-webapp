@@ -1,9 +1,10 @@
 import { useQuery } from 'react-query';
 import MessagesContacts from '../../components/MessagesContacts';
 import MessagesHeader from '../../components/MessagesHeader';
-import MessagesService, { ContactApiModel } from '../../services/messages';
+import MessagesService from '../../services/messages';
 import clsx from 'clsx';
 import globalStyles from '../../assets/styles/GlobalTheme.module.scss';
+import { ContactApiModel } from '../../models/messagesModels';
 
 const Messages = () => {
 	const {
