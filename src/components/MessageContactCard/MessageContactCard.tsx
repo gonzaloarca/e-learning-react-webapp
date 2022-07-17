@@ -15,7 +15,7 @@ const MessageContactCard = (props: MessageContactCardProps) => {
 
     return (
         <div>
-            <Avatar src={avatar} alt={name} size={50}/>
+            <Avatar src={avatar} alt={name} size={50}/> 
             <div>
                 <h1>{name}</h1>
                 <p>{lastMessage}</p>

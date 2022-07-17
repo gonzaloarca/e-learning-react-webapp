@@ -6,7 +6,7 @@ import {
 	LinkOutlined,
 } from '@ant-design/icons';
 import Menu, { MenuProps } from 'antd/lib/menu';
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Role } from '../../models/authModels';
 import Routes from '../../routes/routes';
@@ -16,8 +16,6 @@ import { Props } from '../utils/types';
 type MenuItem = Required<MenuProps>['items'][number];
 
 const SideMenu = (props: Props) => {
-
-	const [selectedKey, setSelectedKey] = useState<string>("1");
 
 	const getItem = (
 		label: React.ReactNode,
@@ -40,9 +38,9 @@ const SideMenu = (props: Props) => {
 	};
 
 	const items: MenuItem[] = [
-		getItem(renderLinkItem("My Courses", Routes.Courses.path), '1', <MailOutlined />),
+		getItem(renderLinkItem("My Courses", Routes.Courses.path), Routes.Courses.path, <MailOutlined />),
 		getRole() === Role.PROFESSOR ? getItem('My Teaching', '2', <CalendarOutlined />) : null,
-		getItem(renderLinkItem("Messages", Routes.Messages.path), '3', <AppstoreOutlined />),
+		getItem(renderLinkItem("Messages", Routes.Messages.path), Routes.Messages.path, <AppstoreOutlined />),
 		getItem('Settings', '4', <SettingOutlined />),
 		getItem(
 			<a href='https://ant.design' target='_blank' rel='noopener noreferrer'>
@@ -53,16 +51,23 @@ const SideMenu = (props: Props) => {
 		),
 	];
 
-	const onSelectItem: MenuProps['onClick'] = (e) => {
-		setSelectedKey(e.key);
-	};
+	const selectedKey = useMemo(() => {
+		const route = window.location.pathname.split("/")[1];
+		switch (route) {
+			case Routes.Courses.path:
+				return [Routes.Courses.path];
+			case Routes.Messages.path:
+				return [Routes.Messages.path];
+			default:
+				return [Routes.Courses.path];
+		};
+	}, []);
 
 	return (
 		<Menu
 			// style={{ width: 256 }}
 			// defaultSelectedKeys={["1"]}
-			selectedKeys={[selectedKey]}
-			onClick={onSelectItem}
+			selectedKeys={selectedKey}
 			// defaultOpenKeys={['sub1']}
 			mode='vertical'
 			theme='dark'
