@@ -10,6 +10,9 @@ const Routes = {
         path: "/cognito",
         callbackUrl: "/cognito/callback",
         logoutUrl: "/cognito/logout",
+    },
+    Messages: {
+        path: "/messages",
     }
 };
 

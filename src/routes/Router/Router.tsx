@@ -3,6 +3,7 @@ import ChooseRole from '../../components/ChooseRole';
 import CognitoCallback from '../../components/CognitoCallback';
 import Courses from '../../views/Courses';
 import Landing from '../../views/Landing';
+import Messages from '../../views/Messages';
 import OmniRoutes from '../routes';
 
 const OmniRouter = () => {
@@ -16,6 +17,7 @@ const OmniRouter = () => {
 					element={<CognitoCallback />}
 				/>
 				<Route path={OmniRoutes.Landing.chooseRole} element={<ChooseRole />} />
+				<Route path={OmniRoutes.Messages.path} element={<Messages />} />
 			</Routes>
 		</Router>
 	);

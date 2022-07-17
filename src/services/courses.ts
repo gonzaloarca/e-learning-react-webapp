@@ -1,7 +1,13 @@
 import { CourseAttendance } from '../components/CourseCard/CourseCard';
 import { CourseStatus } from '../components/CourseCard/CourseCard';
+import omniAxios, { HttpMethods } from './axios';
 
-export type CourseModel = {
+const CoursesRoutes = {
+	recentlyWatched: '/courses/recently-watched',
+	byId: (id: number) => `/courses/${id}`,
+}
+
+export type CourseApiModel = {
 	id: number;
 	name: string;
 	description: string;
@@ -11,7 +17,7 @@ export type CourseModel = {
 	attendance: CourseAttendance;
 };
 
-const datasource: CourseModel[] = [
+const datasource: CourseApiModel[] = [
 	{
 		id: 1,
 		name: 'Introduction to Computer Science',
@@ -43,9 +49,14 @@ const datasource: CourseModel[] = [
 ];
 
 const CoursesService = {
-	getRecentlyWatched: async (): Promise<CourseModel[]> => {
+	getRecentlyWatched: async (): Promise<CourseApiModel[]> => {
+		await omniAxios(CoursesRoutes.recentlyWatched, {}, HttpMethods.GET);
 		return datasource;
 	},
+	getById: async (id: number): Promise<CourseApiModel> => {
+		await omniAxios(CoursesRoutes.byId(id), {}, HttpMethods.GET);
+		return datasource[0];
+	}
 };
 
 export default CoursesService;
