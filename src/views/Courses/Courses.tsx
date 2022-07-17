@@ -11,6 +11,7 @@ const Courses = () => {
 
 	return (
 		<>
+			<h1>My Courses</h1>
 			<CoursesSection
 				courses={recentlyWatched}
 				sectionTitle='Recently Watched'
