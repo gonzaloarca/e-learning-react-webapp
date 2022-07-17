@@ -2,8 +2,9 @@ import { Layout } from 'antd';
 import clsx from 'clsx';
 import SideMenu from '../SideMenu';
 import { Props } from '../utils/types';
-import styles from '../../App.module.scss';
+import styles from '../../assets/styles/App.module.scss';
 import Navbar from '../Navbar';
+import globalStyles from '../../assets/styles/GlobalTheme.module.scss';
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -12,16 +13,41 @@ const OmniLayout = (props: Props) => {
 
 	return (
 		<Layout>
-			<Header>
+			<Header
+				style={{
+					position: 'fixed',
+					width: '100%',
+					zIndex: 1000,
+					height: globalStyles.navbarHeight,
+					padding: 0,
+				}}
+			>
 				<Navbar />
 			</Header>
-			<Layout>
-				<Sider>
+			<Layout hasSider>
+				<Sider
+					style={{
+						position: 'fixed',
+						height: '100%',
+						width: globalStyles.navbarWidth,
+						zIndex: 1000,
+						marginTop: globalStyles.navbarHeight,
+					}}
+				>
 					<SideMenu />
 				</Sider>
-				<Content className={clsx(styles.LayoutContent)}>{children}</Content>
+				<Layout
+					style={{
+						marginLeft: globalStyles.navbarWidth,
+						marginTop: globalStyles.navbarHeight,
+					}}
+				>
+					<Content className={clsx(globalStyles.contentContainer)}>
+						{children}
+					</Content>
+					<Footer>Footer</Footer>
+				</Layout>
 			</Layout>
-			<Footer>Footer</Footer>
 		</Layout>
 	);
 };
