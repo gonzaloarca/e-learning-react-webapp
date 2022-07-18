@@ -1,4 +1,3 @@
-import { UploadFile } from 'antd';
 import { UserApiModel } from './usersModels';
 
 export type CourseApiModel = {
@@ -7,6 +6,7 @@ export type CourseApiModel = {
 	description: string;
 	owner: string;
 	image: string;
+	rating: number;
 };
 
 export type CourseOverviewApiModel = {
@@ -15,7 +15,6 @@ export type CourseOverviewApiModel = {
 	numberOfStudents: number;
 	numberOfTeachers: number;
 	lastUpdated: string;
-	learnings: string[];
 };
 
 export type Image = {

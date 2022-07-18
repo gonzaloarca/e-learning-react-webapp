@@ -26,7 +26,6 @@ const ChooseRole = () => {
 		},
 	});
 
-
 	const onClickContinue = () => {
 		setRole(selectedRole!);
 		mutate(selectedRole!);
@@ -47,9 +46,9 @@ const ChooseRole = () => {
 				</Col>
 				<Col span={8} style={{ display: 'flex', justifyContent: 'center' }}>
 					<RoleCard
-						role={Role.PROFESSOR}
-						onClick={e => onClickRole(Role.PROFESSOR)}
-						isSelected={selectedRole === Role.PROFESSOR}
+						role={Role.TEACHER}
+						onClick={e => onClickRole(Role.TEACHER)}
+						isSelected={selectedRole === Role.TEACHER}
 					/>
 				</Col>
 			</Row>
