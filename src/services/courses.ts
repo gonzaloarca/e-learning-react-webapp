@@ -1,7 +1,6 @@
 import {
 	CourseApiModel,
 	CourseCreationOmniModel,
-	CourseOverviewApiModel,
 } from '../models/coursesModels';
 import omniAxios, { HttpMethods } from './axios';
 
@@ -69,7 +68,7 @@ const CoursesService = {
 		return datasource[0];
 	},
 	create: async (course: CourseCreationOmniModel): Promise<void> => {
-		await omniAxios(CoursesRoutes.courses, { course }, HttpMethods.POST);
+		await omniAxios(CoursesRoutes.courses, { ...course }, HttpMethods.POST);
 	},
 };
 

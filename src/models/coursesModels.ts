@@ -1,3 +1,4 @@
+import { UploadFile } from 'antd';
 import { UserApiModel } from './usersModels';
 
 export type CourseApiModel = {
@@ -17,8 +18,15 @@ export type CourseOverviewApiModel = {
 	learnings: string[];
 };
 
+export type Image = {
+	name: string;
+	base64: string;
+	type: string;
+	size: number;
+}
+
 export type CourseCreationOmniModel = {
 	name: string;
 	description: string;
-	images: File[];
+	image: Partial<Image>;
 }

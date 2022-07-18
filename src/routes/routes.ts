@@ -34,6 +34,10 @@ const Routes = {
 		id: 'teaching',
 		path: 'teaching',
 	},
+	CreateNewCourse: {
+		id: 'createNewCourse',
+		path: 'teaching/create-course',
+	},
 	PageNotFound: {
 		id: '404',
 		path: '/404',

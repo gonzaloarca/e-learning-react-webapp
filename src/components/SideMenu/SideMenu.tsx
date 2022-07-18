@@ -41,7 +41,8 @@ const SideMenu = (props: Props) => {
 			<AppstoreOutlined />
 		),
 		getRole() === Role.PROFESSOR
-			? getItem('My Teaching', Routes.Teaching.id, <CalendarOutlined />)
+			? getItem(renderLinkItem('My Teaching', Routes.Teaching.path)
+				, Routes.Teaching.id, <CalendarOutlined />)
 			: null,
 		getItem(
 			renderLinkItem('Messages', Routes.Messages.path),
