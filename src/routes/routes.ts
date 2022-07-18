@@ -38,6 +38,10 @@ const Routes = {
 		id: 'createNewCourse',
 		path: 'teaching/create-course',
 	},
+	UploadCourseContent: {
+		id: 'uploadCourseContent',
+		path: 'teaching/:id/upload-content',
+	},
 	PageNotFound: {
 		id: '404',
 		path: '/404',

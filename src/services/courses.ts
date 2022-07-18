@@ -2,6 +2,7 @@ import {
 	CourseApiModel,
 	CourseCreationOmniModel,
 	CourseOverviewApiModel,
+	CourseUploadContentOmniModel,
 } from '../models/coursesModels';
 import omniAxios, { HttpMethods } from './axios';
 import { Role } from '../models/usersModels';
@@ -10,6 +11,7 @@ const CoursesRoutes = {
 	recentlyWatched: '/courses/recently-watched',
 	byId: (id: string) => `/courses/${id}`,
 	courses: '/courses',
+	contentById: (id: string) => `/courses/${id}/content`,
 };
 
 const datasource: CourseApiModel[] = [
@@ -90,6 +92,9 @@ const CoursesService = {
 	create: async (course: CourseCreationOmniModel): Promise<void> => {
 		await omniAxios(CoursesRoutes.courses, { ...course }, HttpMethods.POST);
 	},
+	uploadContent: async (courseContent: CourseUploadContentOmniModel): Promise<void> => {
+		await omniAxios(CoursesRoutes.contentById(courseContent.id), { ...courseContent }, HttpMethods.PUT);
+	}
 };
 
 export default CoursesService;

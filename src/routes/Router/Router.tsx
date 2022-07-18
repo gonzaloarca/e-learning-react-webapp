@@ -15,6 +15,7 @@ import PageNotFound from '../../views/PageNotFound';
 import OmniRoutes from '../routes';
 import MyTeaching from '../../views/MyTeaching';
 import CreateNewCourse from '../../views/CreateNewCourse';
+import UploadCourseContent from '../../views/UploadCourseContent';
 
 const OmniRouter = () => {
 	return (
@@ -33,6 +34,7 @@ const OmniRouter = () => {
 					<Route path={OmniRoutes.Course.path} element={<Course />} />
 					<Route path={OmniRoutes.Teaching.path} element={<MyTeaching />} />
 					<Route path={OmniRoutes.CreateNewCourse.path} element={<CreateNewCourse />} />
+					<Route path={OmniRoutes.UploadCourseContent.path} element={<UploadCourseContent />} />
 				</Route>
 				<Route path='*' element={<Navigate to='/404' replace />} />
 			</Routes>

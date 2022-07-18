@@ -17,7 +17,7 @@ export type CourseOverviewApiModel = {
 	lastUpdated: string;
 };
 
-export type Image = {
+export type Content = {
 	name: string;
 	base64: string;
 	type: string;
@@ -27,5 +27,10 @@ export type Image = {
 export type CourseCreationOmniModel = {
 	name: string;
 	description: string;
-	image: Partial<Image>;
+	image: Partial<Content>;
+}
+
+export type CourseUploadContentOmniModel = {
+	id: string;
+	content: Partial<Content>;
 }
