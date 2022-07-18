@@ -1,21 +1,57 @@
-import React, { useEffect, useState } from 'react';
-import { useQuery, useQueryClient } from 'react-query';
+import React from 'react';
+import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import CourseHeader from '../../components/CourseHeader';
-import {
-	CourseApiModel,
-	CourseOverviewApiModel,
-} from '../../models/coursesModels';
+import { CourseOverviewApiModel } from '../../models/coursesModels';
 import CoursesService from '../../services/courses';
 import globalStyles from '../../assets/styles/GlobalTheme.module.scss';
 import styles from '../../assets/styles/Course.module.scss';
-import { MdSchool } from 'react-icons/md';
 import clsx from 'clsx';
-import { FaChalkboardTeacher } from 'react-icons/fa';
-import { Rate } from 'antd';
-import { AiOutlineClockCircle } from 'react-icons/ai';
+import CourseInfo from '../../components/CourseInfo/CourseInfo';
+import { Tabs } from 'antd';
+import CourseFeed from '../../components/CourseFeed';
+import CourseContent from '../../components/CourseContent';
+import CourseLectures from '../../components/CourseLectures';
+import CourseLiveLectures from '../../components/CourseLiveLectures';
+import CourseForum from '../../components/CourseForum';
+import CourseTeachers from '../../components/CourseTeachers';
+
+const { TabPane } = Tabs;
 
 type Props = {};
+
+const tabs = [
+	{
+		label: 'Feed',
+		key: 'feed',
+		renderContent: () => <CourseFeed />,
+	},
+	{
+		label: 'Content',
+		key: 'content',
+		renderContent: () => <CourseContent />,
+	},
+	{
+		label: 'On-Demand Lectures',
+		key: 'lectures',
+		renderContent: () => <CourseLectures />,
+	},
+	{
+		label: 'Live Lectures',
+		key: 'live',
+		renderContent: () => <CourseLiveLectures />,
+	},
+	{
+		label: 'Forum',
+		key: 'forum',
+		renderContent: () => <CourseForum />,
+	},
+	{
+		label: 'Teachers',
+		key: 'teachers',
+		renderContent: () => <CourseTeachers />,
+	},
+];
 
 const Course = (props: Props) => {
 	/*
@@ -57,55 +93,16 @@ const Course = (props: Props) => {
 			</div>
 			{/* Content */}
 			<div className={clsx(globalStyles.contentContainer)}>
-				<div className={clsx(styles.courseInfo)}>
-					{/* Image */}
-					<img
-						className={clsx(styles.courseImage, 'mr-4')}
-						src={courseData?.data.image ?? ''}
-						alt=''
-					/>
-					{/* Course Metadata */}
-					<div className={clsx(styles.courseMetadata)}>
-						{/* Description */}
-						<div className={clsx(styles.courseDescription)}>
-							{courseData?.data.description ?? ''}
-						</div>
+				<CourseInfo courseData={courseData} />
 
-						<div className={clsx(styles.courseStats)}>
-							{/* Student count */}
-							<div className={clsx(styles.courseStat, 'mr-4')}>
-								<MdSchool className='mr-1' />
-								{`${courseData?.numberOfStudents ?? 0} student${
-									courseData?.numberOfStudents === 1 ? '' : 's'
-								}`}
-							</div>
-							{/* Teacher count */}
-							<div className={clsx(styles.courseStat)}>
-								<FaChalkboardTeacher className='mr-1' />
-								{`${courseData?.numberOfTeachers ?? 0} teacher${
-									courseData?.numberOfTeachers === 1 ? '' : 's'
-								}`}
-							</div>
-						</div>
-
-						{/* Last updated */}
-						<div className={clsx(styles.courseLastUpdated)}>
-							<AiOutlineClockCircle className='mr-1' />{' '}
-							{`Last updated ${courseData?.lastUpdated.toString() ?? ''}`}
-						</div>
-
-						{/* Rating */}
-						<div className={clsx(styles.courseRating)}>
-							{courseData?.data.rating ?? 0}
-							<div className='ml-2'>
-								<Rate
-									allowHalf
-									disabled
-									defaultValue={courseData?.data.rating ?? 0}
-								/>
-							</div>
-						</div>
-					</div>
+				<div className='mt-4'>
+					<Tabs defaultActiveKey={tabs[0].key}>
+						{tabs.map(tab => (
+							<TabPane tab={tab.label} key={tab.key}>
+								{tab.renderContent()}
+							</TabPane>
+						))}
+					</Tabs>
 				</div>
 			</div>
 		</div>
