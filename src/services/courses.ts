@@ -1,6 +1,7 @@
 import {
 	CourseApiModel,
 	CourseCreationOmniModel,
+	CourseOverviewApiModel,
 } from '../models/coursesModels';
 import omniAxios, { HttpMethods } from './axios';
 import { Role } from '../models/usersModels';

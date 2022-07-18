@@ -23,7 +23,7 @@ const ROLE = "OMNI_ROLE";
 export const getRole = () => {
     const role = localStorage.getItem(ROLE);
     if(!role) {
-        return Role.PROFESSOR;
+        return Role.TEACHER;
     }
     return role;
 };
