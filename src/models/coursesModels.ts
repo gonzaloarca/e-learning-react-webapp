@@ -33,4 +33,5 @@ export type CourseCreationOmniModel = {
 export type CourseUploadContentOmniModel = {
 	id: string;
 	content: Partial<Content>;
+	file: FormData;
 }

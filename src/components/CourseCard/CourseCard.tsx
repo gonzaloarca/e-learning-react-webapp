@@ -11,6 +11,7 @@ export type CourseCardProps = {
 
 const CourseCard = (props: CourseCardProps) => {
 	const { name, owner, image, id } = props?.course;
+
 	const navigate = useNavigate();
 
 	const handleClick = useCallback(() => {

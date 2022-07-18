@@ -12,6 +12,7 @@ export type CoursesSectionProps = {
 
 const CoursesSection = (props: CoursesSectionProps) => {
 	const { courses, sectionTitle, className } = props;
+
 	return (
 		<div className={clsx(styles.coursesSection, className)}>
 			<h2 className={clsx(styles.coursesSectionTitle)}>{sectionTitle}</h2>

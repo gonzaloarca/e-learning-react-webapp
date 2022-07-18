@@ -1,11 +1,11 @@
-import React from 'react';
 import { CourseOverviewApiModel } from '../../models/coursesModels';
 import styles from '../../assets/styles/CourseInfo.module.scss';
-import { Rate } from 'antd';
+import { Button, Rate } from 'antd';
 import clsx from 'clsx';
 import { AiOutlineClockCircle } from 'react-icons/ai';
 import { FaChalkboardTeacher } from 'react-icons/fa';
 import { MdSchool } from 'react-icons/md';
+
 type CourseInfoProps = {
 	courseData?: CourseOverviewApiModel;
 };

@@ -34,6 +34,10 @@ const Routes = {
 		id: 'teaching',
 		path: 'teaching',
 	},
+	TeachingCourse: {
+		id: 'teachingCourse',
+		path: 'teaching/:id',
+	},
 	CreateNewCourse: {
 		id: 'createNewCourse',
 		path: 'teaching/create-course',

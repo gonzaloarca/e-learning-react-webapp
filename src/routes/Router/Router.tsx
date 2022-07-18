@@ -33,6 +33,7 @@ const OmniRouter = () => {
 					<Route path={OmniRoutes.Courses.path} element={<MyCourses />} />
 					<Route path={OmniRoutes.Course.path} element={<Course />} />
 					<Route path={OmniRoutes.Teaching.path} element={<MyTeaching />} />
+					<Route path={OmniRoutes.TeachingCourse.path} element={<Course />} />
 					<Route path={OmniRoutes.CreateNewCourse.path} element={<CreateNewCourse />} />
 					<Route path={OmniRoutes.UploadCourseContent.path} element={<UploadCourseContent />} />
 				</Route>

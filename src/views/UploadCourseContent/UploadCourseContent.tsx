@@ -41,7 +41,7 @@ const UploadCourseContent = () => {
 
     const { mutate } = useMutation(CoursesService.uploadContent, {
         onSuccess: () => {
-            navigate(`${course!.data.id}`);
+            navigate(`/teaching/${course!.data.id}`);
         },
         onError: () => {
             // FIXME
@@ -52,6 +52,9 @@ const UploadCourseContent = () => {
     const onFinish = (values: any) => {
         console.log('Success:', values, fileList[0]);
         const { name } = values;
+        const formData = new FormData();
+        formData.append('content', fileList[0].originFileObj as Blob);
+
         mutate({
             id: course!.data.id,
             content: {
@@ -59,7 +62,8 @@ const UploadCourseContent = () => {
                 size: fileList[0]?.size,
                 type: fileList[0]?.type,
                 base64: fileList[0]?.thumbUrl,
-            }
+            },
+            file: formData
         });
     };
 
@@ -69,7 +73,7 @@ const UploadCourseContent = () => {
 
     return (
         <div className={clsx(globalStyles.contentContainer)}>
-            <h1>Create New Course</h1>
+            <h1>Upload New Content</h1>
             {courseIsSuccess && <h3>Course: {course.data.name} (created by {course.owner.name})</h3>}
             <div style={{ display: "flex", justifyContent: "center" }}>
                 <Form

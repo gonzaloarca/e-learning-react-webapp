@@ -15,6 +15,7 @@ import CourseLectures from '../../components/CourseLectures';
 import CourseLiveLectures from '../../components/CourseLiveLectures';
 import CourseForum from '../../components/CourseForum';
 import CourseTeachers from '../../components/CourseTeachers';
+import CourseActions from '../../components/CourseActions';
 
 const { TabPane } = Tabs;
 
@@ -94,7 +95,7 @@ const Course = (props: Props) => {
 			{/* Content */}
 			<div className={clsx(globalStyles.contentContainer)}>
 				<CourseInfo courseData={courseData} />
-
+				<CourseActions />
 				<div className='mt-4'>
 					<Tabs defaultActiveKey={tabs[0].key}>
 						{tabs.map(tab => (

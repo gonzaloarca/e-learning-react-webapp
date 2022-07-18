@@ -92,9 +92,21 @@ const CoursesService = {
 	create: async (course: CourseCreationOmniModel): Promise<void> => {
 		await omniAxios(CoursesRoutes.courses, { ...course }, HttpMethods.POST);
 	},
-	uploadContent: async (courseContent: CourseUploadContentOmniModel): Promise<void> => {
-		await omniAxios(CoursesRoutes.contentById(courseContent.id), { ...courseContent }, HttpMethods.PUT);
-	}
+	uploadContent: async (
+		courseContent: CourseUploadContentOmniModel
+	): Promise<void> => {
+		const { file, content } = courseContent;
+		await omniAxios(
+			CoursesRoutes.contentById(courseContent.id),
+			{ file, content },
+			HttpMethods.PUT,
+			{
+				additionalHeaders: {
+					'Content-Type': 'multipart/form-data',
+				},
+			}
+		);
+	},
 };
 
 export default CoursesService;
