@@ -18,7 +18,7 @@ const CourseHeader = (props: CourseHeaderProps) => {
 				<div className={clsx(styles.courseInfoContainer)}>
 					<div
 						className={clsx(styles.courseInfo, globalStyles.contentContainer)}
-						style={{ paddingBottom: 0 }}
+						style={{ paddingBottom: '1rem' }}
 					>
 						<h1 className={clsx(styles.courseName)}>{props.name}</h1>
 						<div className={clsx(styles.courseOwner, 'flex items-center')}>

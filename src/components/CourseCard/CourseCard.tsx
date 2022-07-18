@@ -25,7 +25,7 @@ const CourseCard = (props: CourseCardProps) => {
 					<div className={styles.cardTitle}>{name}</div>
 					<div className={styles.cardSubtitle}>
 						<FaUserAlt className='mr-2' />
-						<div className={styles.professorName}>{owner}</div>
+						<div className={styles.teacherName}>{owner}</div>
 					</div>
 				</div>
 			</div>
