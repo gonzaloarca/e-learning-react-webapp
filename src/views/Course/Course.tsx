@@ -30,7 +30,7 @@ const tabs = [
 	{
 		label: 'Content',
 		key: 'content',
-		renderContent: () => <CourseContent />,
+		renderContent: (id: string) => <CourseContent id={id} />,
 	},
 	{
 		label: 'On-Demand Lectures',
@@ -100,7 +100,7 @@ const Course = (props: Props) => {
 					<Tabs defaultActiveKey={tabs[0].key}>
 						{tabs.map(tab => (
 							<TabPane tab={tab.label} key={tab.key}>
-								{tab.renderContent()}
+								{tab.renderContent(courseData!.data.id)}
 							</TabPane>
 						))}
 					</Tabs>

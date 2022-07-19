@@ -1,5 +1,6 @@
 import {
 	CourseApiModel,
+	CourseContentApiModel,
 	CourseCreationOmniModel,
 	CourseOverviewApiModel,
 	CourseUploadContentOmniModel,
@@ -11,7 +12,9 @@ const CoursesRoutes = {
 	recentlyWatched: '/courses/recently-watched',
 	byId: (id: string) => `/courses/${id}`,
 	courses: '/courses',
-	contentById: (id: string) => `/courses/${id}/content`,
+	content: (id: string) => `/courses/${id}/content`,
+	contentById: (courseId: string, contentId: string) =>
+		`/courses/${courseId}/content/${contentId}`,
 };
 
 const datasource: CourseApiModel[] = [
@@ -97,7 +100,7 @@ const CoursesService = {
 	): Promise<void> => {
 		const { file, content } = courseContent;
 		await omniAxios(
-			CoursesRoutes.contentById(courseContent.id),
+			CoursesRoutes.content(courseContent.id),
 			{ file, content },
 			HttpMethods.PUT,
 			{
@@ -105,6 +108,42 @@ const CoursesService = {
 					'Content-Type': 'multipart/form-data',
 				},
 			}
+		);
+	},
+	getContent: async (id: string): Promise<CourseContentApiModel[]> => {
+		await omniAxios(CoursesRoutes.content(id), {}, HttpMethods.GET);
+		return [
+			{
+				contentId: '1',
+				content: {
+					name: 'Introduction to Computer Science',
+					size: 1234,
+				},
+				uploaded: '2020-05-01T00:00:00.000Z',
+				downloadUrl: 'https://www.google.com',
+			},
+			{
+				contentId: '2',
+				content: {
+					name: 'Introduction to Computer Science',
+					size: 1234,
+				},
+				uploaded: '2020-05-01T00:00:00.000Z',
+				downloadUrl: 'https://www.google.com',
+			},
+		];
+	},
+	deleteContentById: async ({
+		courseId,
+		contentId,
+	}: {
+		courseId: string;
+		contentId: string;
+	}): Promise<void> => {
+		await omniAxios(
+			CoursesRoutes.contentById(courseId, contentId),
+			{},
+			HttpMethods.DELETE
 		);
 	},
 };

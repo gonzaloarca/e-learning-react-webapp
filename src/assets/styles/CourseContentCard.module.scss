@@ -1,0 +1,28 @@
+@import './GlobalTheme.module.scss';
+
+.contentCard {
+    height: 5rem;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    align-items: center;
+    margin: 0.75rem 0;
+}
+
+.contentData > span{
+    display: block;
+    margin: -0.25rem 0;
+}
+
+.actions {
+
+}
+
+.iconButton {
+    border: 0px
+}
+
+.deleteButton {
+    color: red;
+}
