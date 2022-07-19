@@ -2,6 +2,7 @@
 	"name": "omni",
 	"version": "0.1.0",
 	"private": true,
+	"proxy": "http://localhost:8080",
 	"dependencies": {
 		"@ant-design/icons": "^4.7.0",
 		"@craco/craco": "^6.4.5",

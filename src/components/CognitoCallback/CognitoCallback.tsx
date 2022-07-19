@@ -12,8 +12,10 @@ const CognitoCallback = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
+
         const code = query.get("code");
         if (code) {
+            query.set("code", "");
             AuthService.login(code).then(auth => {
                 setSession(auth.token);
                 if (auth.user.role === Role.NONE) {

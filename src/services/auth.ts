@@ -2,15 +2,15 @@ import { AuthApiModel } from '../models/authModels';
 import omniAxios, { HttpMethods } from './axios';
 
 const AuthServiceRoutes = {
-	login: '/authentication/login',
+	login: '/users/login',
 };
 
 const AuthService = {
 	login: async (code: string): Promise<AuthApiModel> => {
 		return omniAxios<AuthApiModel>(
-			AuthServiceRoutes.login,
-			{ code },
-			HttpMethods.POST
+			AuthServiceRoutes.login + `?code=${code}`,
+			{ },
+			HttpMethods.GET
 		);
 	},
 };
