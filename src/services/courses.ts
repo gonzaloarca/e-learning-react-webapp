@@ -72,6 +72,9 @@ const datasource: CourseApiModel[] = [
 ];
 
 const CoursesService = {
+	getAll: async () => {
+		return omniAxios<Promise<CourseApiModel[]>>(CoursesRoutes.courses, {}, HttpMethods.GET);
+	},
 	getByUserId: async (): Promise<CourseApiModel[]> => {
 		const { id } = getUserDataFromJwt(getSession());
 		await omniAxios(CoursesRoutes.byUserId(id), {}, HttpMethods.GET);

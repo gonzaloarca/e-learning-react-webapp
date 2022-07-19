@@ -45,6 +45,11 @@ const SideMenu = (props: Props) => {
 				, Routes.Teaching.id, <CalendarOutlined />)
 			: null,
 		getItem(
+			renderLinkItem('Explore', Routes.ExploreCourses.path),
+			Routes.ExploreCourses.id,
+			<AppstoreOutlined />
+		),
+		getItem(
 			renderLinkItem('Messages', Routes.Messages.path),
 			Routes.Messages.id,
 			<MessageOutlined />
@@ -65,6 +70,8 @@ const SideMenu = (props: Props) => {
 				return [Routes.AccountSettings.id];
 			case Routes.Teaching.id:
 				return [Routes.Teaching.id];
+			case Routes.ExploreCourses.id:
+				return [Routes.ExploreCourses.id];
 			default:
 				return [Routes.Courses.id];
 		}

@@ -46,6 +46,10 @@ const Routes = {
 		id: 'uploadCourseContent',
 		path: 'teaching/:id/upload-content',
 	},
+	ExploreCourses: {
+		id: 'explore',
+		path: 'explore',
+	},
 	PageNotFound: {
 		id: '404',
 		path: '/404',
