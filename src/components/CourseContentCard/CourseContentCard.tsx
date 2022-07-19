@@ -1,12 +1,12 @@
 import { CourseContentApiModel } from "../../models/coursesModels";
 import styles from "../../assets/styles/CourseContentCard.module.scss";
-import globalStyles from '../../assets/styles/GlobalTheme.module.scss';
 import clsx from "clsx";
 import { Button, Tooltip } from "antd";
 import { DeleteOutlined, DownloadOutlined } from "@ant-design/icons";
 import { useMutation } from "react-query";
 import CoursesService from "../../services/courses";
 import AwsService from "../../services/aws";
+import { useLocation } from "react-router-dom";
 
 type CourseContentCardProps = {
     course: CourseContentApiModel;
@@ -50,8 +50,11 @@ const CourseContentCard = (props: CourseContentCardProps) => {
         downloadContent(downloadUrl);
     };
 
+    const location = useLocation();
+    const isTeachingPage = location.pathname.includes("/teaching");
+
     return (
-        <div className={clsx(styles.contentCard)} style={{ background: globalStyles.primary3 }}>
+        <div className={clsx(styles.contentCard)}> 
             <div className={clsx(styles.contentData)}>
                 <span>{content?.name}</span>
                 <span>{content?.size}</span>
@@ -67,15 +70,17 @@ const CourseContentCard = (props: CourseContentCardProps) => {
                         icon={<DownloadOutlined />}
                     />
                 </Tooltip>
-                <Tooltip title="Delete">
-                    <Button
-                        size="middle"
-                        onClick={handleDelete}
-                        className={clsx(styles.iconButton, styles.deleteButton)}
-                        shape="circle"
-                        icon={<DeleteOutlined />}
-                    />
-                </Tooltip>
+                {
+                    isTeachingPage && (<Tooltip title="Delete">
+                        <Button
+                            size="middle"
+                            onClick={handleDelete}
+                            className={clsx(styles.iconButton, styles.deleteButton)}
+                            shape="circle"
+                            icon={<DeleteOutlined />}
+                        />
+                    </Tooltip>)
+                }
             </div>
         </div>
     );
