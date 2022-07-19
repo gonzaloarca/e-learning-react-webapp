@@ -7,6 +7,7 @@ import { useMutation, useQuery } from 'react-query';
 import { useNavigate, useParams } from 'react-router-dom';
 import globalStyles from '../../assets/styles/GlobalTheme.module.scss';
 import { CourseOverviewApiModel } from '../../models/coursesModels';
+import formStyles from '../../assets/styles/Form.module.scss';
 import Routes from '../../routes/routes';
 import CoursesService from '../../services/courses';
 
@@ -73,9 +74,9 @@ const UploadCourseContent = () => {
 
     return (
         <div className={clsx(globalStyles.contentContainer)}>
-            <h1>Upload New Content</h1>
-            {courseIsSuccess && <h3>Course: {course.data.name} (created by {course.owner.name})</h3>}
-            <div style={{ display: "flex", justifyContent: "center" }}>
+            <h1 style={{ marginBottom: 0 }}>Upload New Content</h1>
+            {courseIsSuccess && <h3 className={clsx(formStyles.lastTitle)}>Course: {course.data.name} (created by {course.owner.name})</h3>}
+            <div className={clsx(formStyles.container)}>
                 <Form
                     layout="vertical"
                     onFinish={onFinish}
@@ -107,7 +108,7 @@ const UploadCourseContent = () => {
                         </Upload>
                     </Form.Item>
                     <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-                        <Button type="primary" htmlType="submit">
+                        <Button className={clsx(formStyles.submitButton)} type="primary" htmlType="submit" >
                             UPLOAD
                         </Button>
                     </Form.Item>

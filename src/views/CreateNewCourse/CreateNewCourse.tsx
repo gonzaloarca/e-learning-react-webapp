@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import globalStyles from '../../assets/styles/GlobalTheme.module.scss';
+import formStyles from '../../assets/styles/Form.module.scss';
 import Routes from '../../routes/routes';
 import CoursesService from '../../services/courses';
 
@@ -97,8 +98,8 @@ const CreateNewCourse = () => {
 
     return (
         <div className={clsx(globalStyles.contentContainer)}>
-            <h1>Create New Course</h1>
-            <div style={{ display: "flex", justifyContent: "center" }}>
+            <h1 className={clsx(formStyles.lastTitle)}>Create New Course</h1>
+            <div className={clsx(formStyles.container)}>
                 <Form
                     layout="vertical"
                     onFinish={onFinish}
@@ -145,13 +146,13 @@ const CreateNewCourse = () => {
                         </Modal>
                     </Form.Item>
                     <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-                        <Button type="primary" htmlType="submit">
+                        <Button className={clsx(formStyles.submitButton)} type="primary" htmlType="submit">
                             CREATE
                         </Button>
                     </Form.Item>
                 </Form>
             </div>
-        </div>
+        </div >
     );
 };
 

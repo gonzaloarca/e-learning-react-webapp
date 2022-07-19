@@ -1,0 +1,26 @@
+@import './GlobalTheme.module.scss';
+
+.container {
+    display: flex;
+    justify-content: center;
+    width: 45rem;
+    margin-right: 10%;
+    margin-left: 10%;
+    background: $primary-3;
+    padding: 3rem 0 0.25rem 0;
+    border-radius: 1rem;
+}
+
+.lastTitle {
+    margin-bottom: 3.5rem;
+}
+
+input,
+textarea {
+    border-color: white !important;
+}
+
+.submitButton {
+    width: 15rem;
+    border-radius: 0.25rem;
+}
