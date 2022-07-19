@@ -20,7 +20,7 @@ const MyTeaching = () => {
 		data: recentlyWatched,
 		isSuccess: recentlyWatchedIsSuccess,
 		isLoading: recentlyWatchedIsLoading,
-	} = useQuery<CourseApiModel[]>('RecentlyWatched', CoursesService.getRecentlyWatched);
+	} = useQuery<CourseApiModel[]>('RecentlyWatched', CoursesService.getByUserId);
 
 
     return (

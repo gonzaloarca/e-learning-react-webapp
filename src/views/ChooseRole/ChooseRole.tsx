@@ -19,7 +19,7 @@ const ChooseRole = () => {
 
 	const { mutate } = useMutation(UsersService.chooseRole, {
 		onSuccess: () => {
-			navigate(Routes.Courses.path);
+			navigate("/" + Routes.Courses.path);
 		},
 		onError: () => {
 			navigate(Routes.Landing.path);

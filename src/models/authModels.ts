@@ -1,4 +1,4 @@
-import { UserApiModel } from './usersModels';
+import { Role, UserApiModel } from './usersModels';
 
 export type AuthApiModel = {
 	user: UserApiModel;

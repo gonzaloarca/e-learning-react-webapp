@@ -7,9 +7,10 @@ import {
 } from '../models/coursesModels';
 import omniAxios, { HttpMethods } from './axios';
 import { Role } from '../models/usersModels';
+import { getUserDataFromJwt, getSession } from '../components/utils/session';
 
 const CoursesRoutes = {
-	recentlyWatched: '/courses/recently-watched',
+	byUserId: (userId: string) => `/courses?user_id=${userId}`,
 	byId: (id: string) => `/courses/${id}`,
 	courses: '/courses',
 	content: (id: string) => `/courses/${id}/content`,
@@ -71,8 +72,9 @@ const datasource: CourseApiModel[] = [
 ];
 
 const CoursesService = {
-	getRecentlyWatched: async (): Promise<CourseApiModel[]> => {
-		await omniAxios(CoursesRoutes.recentlyWatched, {}, HttpMethods.GET);
+	getByUserId: async (): Promise<CourseApiModel[]> => {
+		const { id } = getUserDataFromJwt(getSession());
+		await omniAxios(CoursesRoutes.byUserId(id), {}, HttpMethods.GET);
 		return datasource;
 	},
 	getById: async (id: string): Promise<CourseOverviewApiModel> => {

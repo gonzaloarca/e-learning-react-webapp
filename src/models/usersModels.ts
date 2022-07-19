@@ -11,3 +11,8 @@ export type UserApiModel = {
 	avatarUrl: string;
 	role: Role;
 };
+
+export type JwtTokenApiModel = {
+	id: string;
+	role: Role;
+};

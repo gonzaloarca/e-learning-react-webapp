@@ -22,7 +22,7 @@ const CognitoCallback = () => {
                     navigate(Routes.Landing.chooseRole);
                 } else {
                     setRole(auth.user.role);
-                    navigate(Routes.Courses.path);
+                    navigate("/" + Routes.Courses.path);
                 }
             });
         }
