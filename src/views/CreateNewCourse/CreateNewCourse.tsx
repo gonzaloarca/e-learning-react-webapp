@@ -9,6 +9,7 @@ import globalStyles from '../../assets/styles/GlobalTheme.module.scss';
 import formStyles from '../../assets/styles/Form.module.scss';
 import Routes from '../../routes/routes';
 import CoursesService from '../../services/courses';
+import { getUserId } from '../../components/utils/session';
 
 const getBase64 = (file: RcFile): Promise<string> =>
     new Promise((resolve, reject) => {
@@ -80,16 +81,12 @@ const CreateNewCourse = () => {
     const onFinish = (values: any) => {
         console.log('Success:', values, fileList[0]);
         const { name, description } = values;
-        mutate({
-            name,
-            description,
-            image: {
-                name: fileList[0]?.name,
-                size: fileList[0]?.size,
-                type: fileList[0]?.type,
-                base64: fileList[0]?.thumbUrl,
-            }
-        });
+        const formData = new FormData();
+        formData.append('image', fileList[0].originFileObj as Blob);
+        formData.append('name', name);
+        formData.append('description', description);
+        formData.append('user_id', getUserId());
+        mutate(formData);
     };
 
     const onFinishFailed = (errorInfo: any) => {
