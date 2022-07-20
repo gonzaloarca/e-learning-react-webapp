@@ -16,7 +16,7 @@ import {
 } from '../components/utils/session';
 
 const CoursesRoutes = {
-	byUserId: (userId: string) => `/courses?user_id=${userId}`,
+	byUserId: (userId: string, role: Role) => `/courses?user_id=${userId}&role=${role}`,
 	byId: (id: string) => `/courses/${id}`,
 	courses: '/courses',
 	content: (id: string) => `/courses/${id}/content`,
@@ -83,9 +83,9 @@ const CoursesService = {
 		// await omniAxios<Promise<CourseApiModel[]>>(CoursesRoutes.courses, {}, HttpMethods.GET);
 		return datasource;
 	},
-	getByUserId: async (): Promise<CourseApiModel[]> => {
-		// const userId = getUserId();
-		// await omniAxios(CoursesRoutes.byUserId(userId), {}, HttpMethods.GET);
+	getByUserId: async (role: Role): Promise<CourseApiModel[]> => {
+		const userId = getUserId();
+		await omniAxios(CoursesRoutes.byUserId(userId, role), {}, HttpMethods.GET);
 		return datasource;
 	},
 	getById: async (id: string): Promise<CourseOverviewOmniModel> => {

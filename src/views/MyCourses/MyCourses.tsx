@@ -4,6 +4,7 @@ import globalStyles from '../../assets/styles/GlobalTheme.module.scss';
 import clsx from 'clsx';
 import { CourseApiModel } from '../../models/coursesModels';
 import { useQuery } from 'react-query';
+import { Role } from '../../models/usersModels';
 
 const MyCourses = () => {
 
@@ -11,7 +12,7 @@ const MyCourses = () => {
 		data: myCourses,
 		isSuccess: myCoursesIsSuccess,
 		isLoading: myCoursesIsLoading,
-	} = useQuery<CourseApiModel[]>('MyCourses', CoursesService.getByUserId);
+	} = useQuery<CourseApiModel[]>('MyCourses', () => CoursesService.getByUserId(Role.STUDENT));
 
 	return (
 		<div className={clsx(globalStyles.contentContainer)}>

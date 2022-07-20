@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import globalStyles from '../../assets/styles/GlobalTheme.module.scss';
 import CoursesSection from '../../components/CoursesSection';
 import { CourseApiModel } from '../../models/coursesModels';
+import { Role } from '../../models/usersModels';
 import Routes from '../../routes/routes';
 import CoursesService from '../../services/courses';
 
@@ -20,7 +21,7 @@ const MyTeaching = () => {
 		data: myTeachingCourses,
 		isSuccess: myTeachingCoursesIsSuccess,
 		isLoading: myTeachingCoursesIsLoading,
-	} = useQuery<CourseApiModel[]>('MyTeachingCourses', CoursesService.getByUserId);
+	} = useQuery<CourseApiModel[]>('MyTeachingCourses', () => CoursesService.getByUserId(Role.TEACHER));
 
     return (
         <div className={clsx(globalStyles.contentContainer)}>
