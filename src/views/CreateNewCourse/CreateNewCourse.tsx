@@ -70,7 +70,7 @@ const CreateNewCourse = () => {
 
     const { mutate } = useMutation(CoursesService.create, {
         onSuccess: () => {
-            navigate(`1`);
+            navigate("/teaching");
         },
         onError: () => {
             // FIXME
