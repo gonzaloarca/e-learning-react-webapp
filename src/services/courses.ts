@@ -14,6 +14,7 @@ import {
 	getSession,
 	getUserId,
 } from '../components/utils/session';
+import fileDownload from 'js-file-download';
 
 const CoursesRoutes = {
 	byUserId: (userId: string, role: Role) => `/courses?user_id=${userId}&role=${role}`,
@@ -179,6 +180,22 @@ const CoursesService = {
 			{},
 			HttpMethods.DELETE
 		);
+	},
+	downloadContentById: async ({contentId, courseId, contentName}: {contentId: string, courseId:string, contentName: string}): Promise<void> => {
+		const file = await omniAxios<Blob>(
+			CoursesRoutes.contentById(courseId, contentId),
+			{},
+			HttpMethods.GET,
+			{
+				additionalHeaders: {
+					Accept: 'application/octet-stream',
+				},
+				otherAxiosParams: {
+					responseType: 'blob',
+				}
+			}
+		);
+		fileDownload(file, contentName);
 	},
 	subscribe: async (courseId: string): Promise<void> => {
 		const userId = getUserId();

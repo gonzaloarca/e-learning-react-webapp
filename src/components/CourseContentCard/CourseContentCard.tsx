@@ -5,8 +5,6 @@ import { Button, Tooltip } from "antd";
 import { DeleteOutlined, DownloadOutlined } from "@ant-design/icons";
 import { useMutation } from "react-query";
 import CoursesService from "../../services/courses";
-import AwsService from "../../services/aws";
-import { useLocation } from "react-router-dom";
 
 type CourseContentCardProps = {
     course: CourseContentApiModel;
@@ -39,7 +37,7 @@ const CourseContentCard = (props: CourseContentCardProps) => {
 
     const {
         mutate: downloadContent,
-    } = useMutation(AwsService.get, {
+    } = useMutation(CoursesService.downloadContentById, {
         onSuccess: () => {
             console.log("Content downloaded");
         },
@@ -49,7 +47,7 @@ const CourseContentCard = (props: CourseContentCardProps) => {
     });
 
     const handleDownload = () => {
-        downloadContent(downloadUrl);
+        downloadContent({ courseId, contentId, contentName: content!.name! });
     };
 
 
