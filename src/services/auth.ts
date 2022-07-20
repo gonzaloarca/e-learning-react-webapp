@@ -10,7 +10,10 @@ const AuthService = {
 		return omniAxios<AuthApiModel>(
 			AuthServiceRoutes.login + `?code=${code}`,
 			{ },
-			HttpMethods.GET
+			HttpMethods.GET,
+			{
+				authenticated: false,
+			}
 		);
 	},
 };
