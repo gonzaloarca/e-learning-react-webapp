@@ -35,8 +35,8 @@ const CourseContent = (props: CourseContentProps) => {
 						course={courseContent}
 						courseId={id}
 						onDeleteContent={onDeleteContent}
-						showDownloadButton={showContentDownloadButton}
-						showDeleteButton={showContentDeleteButton}
+						showDownloadButton={true}
+						showDeleteButton={true}
 					/>;
 				})
 			}

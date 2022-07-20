@@ -156,7 +156,7 @@ const CoursesService = {
 		);
 	},
 	getContent: async (id: string): Promise<CourseContentApiModel[]> => {
-		await omniAxios(CoursesRoutes.content(id), {}, HttpMethods.GET);
+		return await omniAxios(CoursesRoutes.content(id), {}, HttpMethods.GET);
 		return [
 			{
 				contentId: '1',
