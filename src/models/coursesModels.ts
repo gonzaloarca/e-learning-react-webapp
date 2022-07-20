@@ -9,13 +9,14 @@ export type CourseApiModel = {
 	rating: number;
 };
 
-export type CourseOverviewApiModel = {
+export interface CourseOverviewApiModel {
 	data: CourseApiModel;
 	owner: UserApiModel;
 	numberOfStudents: number;
 	numberOfTeachers: number;
 	lastUpdated: string;
-};
+	subscribed: boolean;
+}
 
 export type CourseContentApiModel = {
 	contentId: string;
@@ -42,3 +43,12 @@ export type CourseUploadContentOmniModel = {
 	content: Partial<Content>;
 	file: FormData;
 };
+
+export enum SUBSCRIPTION_STATUS {
+	SUBSCRIBED = 'SUBSCRIBED',
+	NOT_SUBSCRIBED = 'NOT SUBSCRIBED',
+	OWNER = 'OWNER',
+}
+export interface CourseOverviewOmniModel extends CourseOverviewApiModel {
+	subscriptionStatus: SUBSCRIPTION_STATUS;
+}

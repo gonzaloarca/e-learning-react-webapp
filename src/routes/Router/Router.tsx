@@ -17,6 +17,8 @@ import MyTeaching from '../../views/MyTeaching';
 import CreateNewCourse from '../../views/CreateNewCourse';
 import UploadCourseContent from '../../views/UploadCourseContent';
 import ExploreCourses from '../../views/ExploreCourses';
+import MyTeachingCourse from '../../views/MyTeachingCourse';
+import ExploreCourse from '../../views/ExploreCourse/ExploreCourse';
 
 const OmniRouter = () => {
 	return (
@@ -32,12 +34,13 @@ const OmniRouter = () => {
 				<Route path='/' element={<OmniLayout />}>
 					<Route path={OmniRoutes.Messages.path} element={<Messages />} />
 					<Route path={OmniRoutes.Courses.path} element={<MyCourses />} />
-					<Route path={OmniRoutes.Course.path} element={<Course />} />
+					<Route path={OmniRoutes.Course.path} element={<Course showContentDownloadButton={true} />} />
 					<Route path={OmniRoutes.Teaching.path} element={<MyTeaching />} />
-					<Route path={OmniRoutes.TeachingCourse.path} element={<Course />} />
+					<Route path={OmniRoutes.TeachingCourse.path} element={<MyTeachingCourse />} />
 					<Route path={OmniRoutes.CreateNewCourse.path} element={<CreateNewCourse />} />
 					<Route path={OmniRoutes.UploadCourseContent.path} element={<UploadCourseContent />} />
-					<Route path={OmniRoutes.ExploreCourses.path} element={<ExploreCourses />} />
+					<Route path={OmniRoutes.Explore.path} element={<ExploreCourses />} />
+					<Route path={OmniRoutes.ExploreCourse.path} element={<ExploreCourse />} />
 				</Route>
 				<Route path='*' element={<Navigate to='/404' replace />} />
 			</Routes>

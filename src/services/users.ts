@@ -1,6 +1,6 @@
 import { Role } from './../models/usersModels';
 import omniAxios, { HttpMethods } from './axios';
-import { getUserDataFromJwt, getSession } from './../components/utils/session';
+import { getUserDataFromJwt, getSession, getUserId } from './../components/utils/session';
 
 const UsersRoutes = {
 	chooseRole: (userId: string) => `/users/${userId}/role`,
@@ -8,8 +8,8 @@ const UsersRoutes = {
 
 const UsersService = {
 	chooseRole: async (role: Role) => {
-		const { id } = getUserDataFromJwt(getSession());
-		await omniAxios(UsersRoutes.chooseRole(id), { role }, HttpMethods.PUT);
+		const userId = getUserId();
+		await omniAxios(UsersRoutes.chooseRole(userId), { role }, HttpMethods.PUT);
 	},
 };
 

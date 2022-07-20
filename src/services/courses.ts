@@ -3,11 +3,17 @@ import {
 	CourseContentApiModel,
 	CourseCreationOmniModel,
 	CourseOverviewApiModel,
+	CourseOverviewOmniModel,
 	CourseUploadContentOmniModel,
+	SUBSCRIPTION_STATUS,
 } from '../models/coursesModels';
 import omniAxios, { HttpMethods } from './axios';
 import { Role } from '../models/usersModels';
-import { getUserDataFromJwt, getSession } from '../components/utils/session';
+import {
+	getUserDataFromJwt,
+	getSession,
+	getUserId,
+} from '../components/utils/session';
 
 const CoursesRoutes = {
 	byUserId: (userId: string) => `/courses?user_id=${userId}`,
@@ -16,6 +22,7 @@ const CoursesRoutes = {
 	content: (id: string) => `/courses/${id}/content`,
 	contentById: (courseId: string, contentId: string) =>
 		`/courses/${courseId}/content/${contentId}`,
+	subscription: (userId: string, courseId: string) => `subscriptions?user_id=${userId}&course_id=${courseId}`,
 };
 
 const datasource: CourseApiModel[] = [
@@ -73,16 +80,21 @@ const datasource: CourseApiModel[] = [
 
 const CoursesService = {
 	getAll: async () => {
-		return omniAxios<Promise<CourseApiModel[]>>(CoursesRoutes.courses, {}, HttpMethods.GET);
-	},
-	getByUserId: async (): Promise<CourseApiModel[]> => {
-		const { id } = getUserDataFromJwt(getSession());
-		await omniAxios(CoursesRoutes.byUserId(id), {}, HttpMethods.GET);
+		// await omniAxios<Promise<CourseApiModel[]>>(CoursesRoutes.courses, {}, HttpMethods.GET);
 		return datasource;
 	},
-	getById: async (id: string): Promise<CourseOverviewApiModel> => {
-		await omniAxios(CoursesRoutes.byId(id), {}, HttpMethods.GET);
-		return {
+	getByUserId: async (): Promise<CourseApiModel[]> => {
+		// const userId = getUserId();
+		// await omniAxios(CoursesRoutes.byUserId(userId), {}, HttpMethods.GET);
+		return datasource;
+	},
+	getById: async (id: string): Promise<CourseOverviewOmniModel> => {
+		// await omniAxios<CourseOverviewApiModel>(
+		// 	CoursesRoutes.byId(id),
+		// 	{},
+		// 	HttpMethods.GET
+		// );
+		const course: CourseOverviewApiModel = {
 			data: datasource[0],
 			owner: {
 				id: '1',
@@ -95,6 +107,23 @@ const CoursesService = {
 			numberOfStudents: 10,
 			numberOfTeachers: 2,
 			lastUpdated: '2020-05-01T00:00:00.000Z',
+			subscribed: true,
+		};
+
+		let subscriptionStatus: SUBSCRIPTION_STATUS;
+
+		const userId = "2"; //getUserId();
+		if (userId === course.owner.id) {
+			subscriptionStatus = SUBSCRIPTION_STATUS.OWNER;
+		} else {
+			subscriptionStatus = course.subscribed
+				? SUBSCRIPTION_STATUS.SUBSCRIBED
+				: SUBSCRIPTION_STATUS.NOT_SUBSCRIBED;
+		}
+
+		return {
+			...course,
+			subscriptionStatus,
 		};
 	},
 	create: async (course: CourseCreationOmniModel): Promise<void> => {
@@ -151,6 +180,10 @@ const CoursesService = {
 			HttpMethods.DELETE
 		);
 	},
+	subscribe: async (courseId: string): Promise<void> => {
+		const userId = getUserId();
+		await omniAxios(CoursesRoutes.subscription(userId, courseId), {}, HttpMethods.POST);
+	}
 };
 
 export default CoursesService;

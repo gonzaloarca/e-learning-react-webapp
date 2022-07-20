@@ -12,11 +12,13 @@ type CourseContentCardProps = {
     course: CourseContentApiModel;
     courseId: string;
     onDeleteContent: () => void;
+    showDeleteButton?: boolean;
+    showDownloadButton?: boolean;
 }
 
 const CourseContentCard = (props: CourseContentCardProps) => {
 
-    const { courseId, onDeleteContent } = props;
+    const { courseId, onDeleteContent, showDeleteButton = true, showDownloadButton = true } = props;
     const { contentId, content, uploaded, downloadUrl } = props.course;
 
     const {
@@ -50,28 +52,28 @@ const CourseContentCard = (props: CourseContentCardProps) => {
         downloadContent(downloadUrl);
     };
 
-    const location = useLocation();
-    const isTeachingPage = location.pathname.includes("/teaching");
 
     return (
-        <div className={clsx(styles.contentCard)}> 
+        <div className={clsx(styles.contentCard)}>
             <div className={clsx(styles.contentData)}>
                 <span>{content?.name}</span>
                 <span>{content?.size}</span>
                 <span>Uploaded {uploaded}</span>
             </div>
             <div className={clsx(styles.actions)}>
-                <Tooltip title="Download">
-                    <Button
-                        size="middle"
-                        onClick={handleDownload}
-                        className={clsx(styles.iconButton)}
-                        shape="circle"
-                        icon={<DownloadOutlined />}
-                    />
-                </Tooltip>
                 {
-                    isTeachingPage && (<Tooltip title="Delete">
+                    showDownloadButton && (<Tooltip title="Download">
+                        <Button
+                            size="middle"
+                            onClick={handleDownload}
+                            className={clsx(styles.iconButton)}
+                            shape="circle"
+                            icon={<DownloadOutlined />}
+                        />
+                    </Tooltip>)
+                }
+                {
+                    showDeleteButton && (<Tooltip title="Delete">
                         <Button
                             size="middle"
                             onClick={handleDelete}

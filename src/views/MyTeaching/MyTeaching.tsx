@@ -17,10 +17,10 @@ const MyTeaching = () => {
     };
 
     const {
-		data: recentlyWatched,
-		isSuccess: recentlyWatchedIsSuccess,
-		isLoading: recentlyWatchedIsLoading,
-	} = useQuery<CourseApiModel[]>('RecentlyWatched', CoursesService.getByUserId);
+		data: myTeachingCourses,
+		isSuccess: myTeachingCoursesIsSuccess,
+		isLoading: myTeachingCoursesIsLoading,
+	} = useQuery<CourseApiModel[]>('MyTeachingCourses', CoursesService.getByUserId);
 
 
     return (
@@ -29,7 +29,7 @@ const MyTeaching = () => {
             <Button onClick={onClickCreateNewCourse}>
                 Create New Course
             </Button>
-            {recentlyWatchedIsSuccess && <CoursesSection courses={recentlyWatched} sectionTitle='Recently Watched' />}
+            {myTeachingCoursesIsSuccess && <CoursesSection courses={myTeachingCourses} sectionTitle='' />}
         </div>
     );
 };
