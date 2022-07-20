@@ -24,7 +24,7 @@ const omniAxios = async <T>(
 	data: {},
 	method: HttpMethods,
 	{
-		authenticated = false,
+		authenticated = true,
 		additionalHeaders = {},
 		otherAxiosParams = {},
 	}: {
@@ -35,10 +35,10 @@ const omniAxios = async <T>(
 ) => {
 	let headers: any = {};
 
-	if (authenticated) {
-		const session = getSession();
-		headers['Authorization'] = `Bearer ${session}`;
-	}
+	// if (authenticated) {
+	const session = getSession();
+	headers['Authorization'] = `Bearer ${session}`;
+	// }
 
 	headers = { ...headers, ...additionalHeaders };
 
