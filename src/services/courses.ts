@@ -91,9 +91,10 @@ const CoursesService = {
 		return datasource;
 	},
 	getByUserId: async (role: Role): Promise<CourseApiModel[]> => {
-		return datasource;
 		const userId = getUserId();
+
 		return omniAxios(CoursesRoutes.byUserId(userId, role), {}, HttpMethods.GET);
+		// return datasource;
 	},
 	getById: async (id: string): Promise<CourseOverviewOmniModel> => {
 		const response = await omniAxios<CourseOverviewApiModel>(
