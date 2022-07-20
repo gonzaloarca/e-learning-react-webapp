@@ -18,12 +18,12 @@ import fileDownload from 'js-file-download';
 
 const CoursesRoutes = {
 	byUserId: (userId: string, role: Role) => `/courses?user_id=${userId}&role=${role}`,
-	byId: (id: string) => `/courses/${id}`,
+	byId: (id: string, userId:string) => `/courses/${id}?user_id=${userId}`,
 	courses: '/courses',
 	content: (id: string) => `/courses/${id}/content`,
 	contentById: (courseId: string, contentId: string) =>
 		`/courses/${courseId}/content/${contentId}`,
-	subscription: (userId: string, courseId: string) => `subscriptions?user_id=${userId}&course_id=${courseId}`,
+	subscription: (userId: string, courseId: string) => `/courses/subscriptions?user_id=${userId}&course_id=${courseId}`,
 };
 
 const datasource: CourseApiModel[] = [
@@ -81,39 +81,43 @@ const datasource: CourseApiModel[] = [
 
 const CoursesService = {
 	getAll: async () => {
-		// await omniAxios<Promise<CourseApiModel[]>>(CoursesRoutes.courses, {}, HttpMethods.GET);
-		return datasource;
+		 return omniAxios<Promise<CourseApiModel[]>>(CoursesRoutes.courses, {}, HttpMethods.GET);
+		 return datasource;
 	},
 	getByUserId: async (role: Role): Promise<CourseApiModel[]> => {
 		const userId = getUserId();
-		await omniAxios(CoursesRoutes.byUserId(userId, role), {}, HttpMethods.GET);
+		return omniAxios(CoursesRoutes.byUserId(userId, role), {}, HttpMethods.GET);
 		return datasource;
 	},
 	getById: async (id: string): Promise<CourseOverviewOmniModel> => {
-		// await omniAxios<CourseOverviewApiModel>(
-		// 	CoursesRoutes.byId(id),
-		// 	{},
-		// 	HttpMethods.GET
-		// );
-		const course: CourseOverviewApiModel = {
-			data: datasource[0],
-			owner: {
-				id: '1',
-				name: 'John Smith',
-				email: 'john@smith.com',
-				avatarUrl:
-					'https://edtech4beginnerscom.files.wordpress.com/2021/05/1.png',
-				role: Role.TEACHER,
-			},
-			numberOfStudents: 10,
-			numberOfTeachers: 2,
-			lastUpdated: '2020-05-01T00:00:00.000Z',
-			subscribed: true,
-		};
+		const response = await omniAxios<CourseOverviewApiModel>(
+			CoursesRoutes.byId(id, getUserId()),
+			{},
+			HttpMethods.GET
+		);
+		
 
+		// const course: CourseOverviewApiModel = {
+		// 	data: datasource[0],
+		// 	owner: {
+		// 		id: '1',
+		// 		name: 'John Smith',
+		// 		email: 'john@smith.com',
+		// 		avatarUrl:
+		// 			'https://edtech4beginnerscom.files.wordpress.com/2021/05/1.png',
+		// 		role: Role.TEACHER,
+		// 	},
+		// 	numberOfStudents: 10,
+		// 	numberOfTeachers: 2,
+		// 	lastUpdated: '2020-05-01T00:00:00.000Z',
+		// 	subscribed: true,
+		// };
+
+		let course = response;
 		let subscriptionStatus: SUBSCRIPTION_STATUS;
 
-		const userId = "2"; //getUserId();
+		//const userId = "2";
+		 const userId = getUserId();
 		if (userId === course.owner.id) {
 			subscriptionStatus = SUBSCRIPTION_STATUS.OWNER;
 		} else {
