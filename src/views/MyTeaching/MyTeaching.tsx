@@ -22,7 +22,6 @@ const MyTeaching = () => {
 		isLoading: myTeachingCoursesIsLoading,
 	} = useQuery<CourseApiModel[]>('MyTeachingCourses', CoursesService.getByUserId);
 
-
     return (
         <div className={clsx(globalStyles.contentContainer)}>
             <h1>My Teaching</h1>

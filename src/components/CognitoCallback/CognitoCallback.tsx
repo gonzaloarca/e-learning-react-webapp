@@ -1,3 +1,4 @@
+import { Space, Spin } from "antd";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useQueryParams from "../../hooks/queryParamsHook";
@@ -29,8 +30,10 @@ const CognitoCallback = () => {
     }, [query]);
 
     return (
-        <div>
-            Reading code...
+        <div style={{ justifyContent: "center", display: "flex", height: "100vh" }}>
+            <Space size="middle">
+                <Spin size="large" tip="Reading code..." />
+            </Space>
         </div>
     );
 };

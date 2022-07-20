@@ -8,16 +8,15 @@ import { useQuery } from 'react-query';
 const MyCourses = () => {
 
 	const {
-		data: recentlyWatched,
-		isSuccess: recentlyWatchedIsSuccess,
-		isLoading: recentlyWatchedIsLoading,
-	} = useQuery<CourseApiModel[]>('RecentlyWatched', CoursesService.getByUserId);
-
+		data: myCourses,
+		isSuccess: myCoursesIsSuccess,
+		isLoading: myCoursesIsLoading,
+	} = useQuery<CourseApiModel[]>('MyCourses', CoursesService.getByUserId);
 
 	return (
 		<div className={clsx(globalStyles.contentContainer)}>
 			<h1>My Courses</h1>
-			{recentlyWatchedIsSuccess && <CoursesSection courses={recentlyWatched} sectionTitle='Recently Watched' />}
+			{myCoursesIsSuccess && <CoursesSection courses={myCourses} sectionTitle='' />}
 		</div>
 	);
 };
