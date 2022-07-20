@@ -19,7 +19,7 @@ const CoursesSection = (props: CoursesSectionProps) => {
 			<Row className={styles.coursesSectionContent} gutter={16}>
 				{courses.map(course => {
 					return (
-						<Col key={course.id} span={6}>
+						<Col key={course.id} span={6} className='mb-2'>
 							<CourseCard course={course} />
 						</Col>
 					);

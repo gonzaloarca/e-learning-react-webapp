@@ -4,7 +4,7 @@ $card-border-radius: 20px;
 
 .cardContainer {
 	width: 100%;
-	height: 100%;
+	height: 30vh;
 	display: inline-block;
 	border-radius: $card-border-radius;
 	background-color: $primary-5;
@@ -21,7 +21,7 @@ $card-border-radius: 20px;
 
 .cardPrimary {
 	position: relative;
-	height: 80%;
+	height: 100%;
 	width: 100%;
 }
 
@@ -44,8 +44,13 @@ $card-border-radius: 20px;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
-	padding: 0.2rem 0.75rem;
+	padding: 0.5rem 0.75rem;
 	border-radius: $card-border-radius;
+
+	&:hover {
+		background: linear-gradient(0, rgba(60, 60, 60, 0.7), rgba(0, 0, 0, 0));
+		transition: all 0.3s;
+	}
 }
 
 .cardTitle {

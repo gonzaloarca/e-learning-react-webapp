@@ -17,13 +17,15 @@ import {
 import fileDownload from 'js-file-download';
 
 const CoursesRoutes = {
-	byUserId: (userId: string, role: Role) => `/courses?user_id=${userId}&role=${role}`,
-	byId: (id: string, userId:string) => `/courses/${id}?user_id=${userId}`,
+	byUserId: (userId: string, role: Role) =>
+		`/courses?user_id=${userId}&role=${role}`,
+	byId: (id: string, userId: string) => `/courses/${id}?user_id=${userId}`,
 	courses: '/courses',
 	content: (id: string) => `/courses/${id}/content`,
 	contentById: (courseId: string, contentId: string) =>
 		`/courses/${courseId}/content/${contentId}`,
-	subscription: (userId: string, courseId: string) => `/courses/subscriptions?user_id=${userId}&course_id=${courseId}`,
+	subscription: (userId: string, courseId: string) =>
+		`/courses/subscriptions?user_id=${userId}&course_id=${courseId}`,
 };
 
 const datasource: CourseApiModel[] = [
@@ -81,13 +83,17 @@ const datasource: CourseApiModel[] = [
 
 const CoursesService = {
 	getAll: async () => {
-		 return omniAxios<Promise<CourseApiModel[]>>(CoursesRoutes.courses, {}, HttpMethods.GET);
-		 return datasource;
+		return omniAxios<Promise<CourseApiModel[]>>(
+			CoursesRoutes.courses,
+			{},
+			HttpMethods.GET
+		);
+		return datasource;
 	},
 	getByUserId: async (role: Role): Promise<CourseApiModel[]> => {
+		return datasource;
 		const userId = getUserId();
 		return omniAxios(CoursesRoutes.byUserId(userId, role), {}, HttpMethods.GET);
-		return datasource;
 	},
 	getById: async (id: string): Promise<CourseOverviewOmniModel> => {
 		const response = await omniAxios<CourseOverviewApiModel>(
@@ -95,7 +101,6 @@ const CoursesService = {
 			{},
 			HttpMethods.GET
 		);
-		
 
 		// const course: CourseOverviewApiModel = {
 		// 	data: datasource[0],
@@ -117,7 +122,7 @@ const CoursesService = {
 		let subscriptionStatus: SUBSCRIPTION_STATUS;
 
 		//const userId = "2";
-		 const userId = getUserId();
+		const userId = getUserId();
 		if (userId === course.owner.id) {
 			subscriptionStatus = SUBSCRIPTION_STATUS.OWNER;
 		} else {
@@ -185,7 +190,15 @@ const CoursesService = {
 			HttpMethods.DELETE
 		);
 	},
-	downloadContentById: async ({contentId, courseId, contentName}: {contentId: string, courseId:string, contentName: string}): Promise<void> => {
+	downloadContentById: async ({
+		contentId,
+		courseId,
+		contentName,
+	}: {
+		contentId: string;
+		courseId: string;
+		contentName: string;
+	}): Promise<void> => {
 		const file = await omniAxios<Blob>(
 			CoursesRoutes.contentById(courseId, contentId),
 			{},
@@ -196,15 +209,19 @@ const CoursesService = {
 				},
 				otherAxiosParams: {
 					responseType: 'blob',
-				}
+				},
 			}
 		);
 		fileDownload(file, contentName);
 	},
 	subscribe: async (courseId: string): Promise<void> => {
 		const userId = getUserId();
-		await omniAxios(CoursesRoutes.subscription(userId, courseId), {}, HttpMethods.POST);
-	}
+		await omniAxios(
+			CoursesRoutes.subscription(userId, courseId),
+			{},
+			HttpMethods.POST
+		);
+	},
 };
 
 export default CoursesService;

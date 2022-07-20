@@ -1,16 +1,13 @@
 $content-height: 90%;
 
 .coursesSection {
-	height: 35vh;
 }
 
 .coursesSectionContent {
 	display: flex;
 	width: inherit;
-	height: $content-height;
 	padding-bottom: 3rem;
 }
 
 .coursesSectionTitle {
-	height: calc(100% - $content-height);
 }

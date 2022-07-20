@@ -48,7 +48,6 @@ const OmniLayout = (props: Props) => {
 					<Content>
 						<Outlet />
 					</Content>
-					<Footer>Footer</Footer>
 				</Layout>
 			</Layout>
 		</Layout>

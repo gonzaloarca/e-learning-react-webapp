@@ -30,7 +30,6 @@ const CourseCard = (props: CourseCardProps) => {
 					</div>
 				</div>
 			</div>
-			<div className={styles.cardSecondary}></div>
 		</div>
 	);
 };
