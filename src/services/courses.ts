@@ -146,8 +146,8 @@ const CoursesService = {
 		const { file, content } = courseContent;
 		await omniAxios(
 			CoursesRoutes.content(courseContent.id),
-			{ file, content },
-			HttpMethods.PUT,
+			file,
+			HttpMethods.POST,
 			{
 				additionalHeaders: {
 					'Content-Type': 'multipart/form-data',

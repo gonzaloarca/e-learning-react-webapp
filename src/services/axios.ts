@@ -10,8 +10,11 @@ export enum HttpMethods {
 }
 
 const axiosClient = axios.create({
-	// baseURL: 'http://localhost:3000',
-	baseURL: 'https://jsonplaceholder.typicode.com/todos/1',
+	//baseURL: 'https://8sv71vqgs9.execute-api.us-east-1.amazonaws.com/production',
+	baseURL: 'http://localhost:8080',
+	//baseURL: '/production',
+	//baseURL: '/',
+	//baseURL: 'https://jsonplaceholder.typicode.com/todos/1',
 	headers: {
 		'Content-Type': 'application/json',
 		Accept: 'application/json',
@@ -38,6 +41,8 @@ const omniAxios = async <T>(
 	// if (authenticated) {
 	const session = getSession();
 	headers['Authorization'] = `Bearer ${session}`;
+	// headers['access-control-request-headers'] = '*';
+	// headers['access-control-request-method'] = '*';
 	// }
 
 	headers = { ...headers, ...additionalHeaders };
@@ -45,7 +50,7 @@ const omniAxios = async <T>(
 	try {
 		const response = await axiosClient({
 			method,
-			// url, // TODO: when back is up, uncomment this line
+			url, // TODO: when back is up, uncomment this line
 			data,
 			headers,
 			...otherAxiosParams,

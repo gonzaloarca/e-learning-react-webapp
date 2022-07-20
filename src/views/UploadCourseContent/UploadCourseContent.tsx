@@ -51,11 +51,11 @@ const UploadCourseContent = () => {
     });
 
     const onFinish = (values: any) => {
-        console.log('Success:', values, fileList[0]);
+        //console.log('Success:', values, fileList[0]);
         const { name } = values;
         const formData = new FormData();
         formData.append('content', fileList[0].originFileObj as Blob);
-
+        formData.append('file', fileList[0].originFileObj as File);
         mutate({
             id: course!.data.id,
             content: {

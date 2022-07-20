@@ -13,7 +13,7 @@ const CognitoCallback = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-
+        
         const code = query.get("code");
         if (code) {
             query.set("code", "");
