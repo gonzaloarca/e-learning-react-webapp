@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const Banner = () => {
 
     const navigate = useNavigate();
-    const client_id = "71dpujgvbmaa1ptj2q7ng3ev5l"
+    const client_id = "4mve6fd0hr23mfmaud5pfkav84"
     const navigateToLogin = () => {
         //navigate(`${"URL TO COGNITO LOGIN"}`);
         window.location.href = (`https://final-cloud-g7-auth-domain.auth.us-east-1.amazoncognito.com/login?client_id=${client_id}&response_type=code&scope=email+openid&redirect_uri=https://final-cloud-g7-web.aleph51.com.ar/cognito/callback`)

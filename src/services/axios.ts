@@ -10,7 +10,7 @@ export enum HttpMethods {
 }
 
 const axiosClient = axios.create({
-	baseURL: 'https://8sv71vqgs9.execute-api.us-east-1.amazonaws.com/production',
+	baseURL: 'https://v5tn50fte4.execute-api.us-east-1.amazonaws.com/production',
 	//baseURL: 'http://localhost:8080',
 	//baseURL: '/production',
 	//baseURL: '/',

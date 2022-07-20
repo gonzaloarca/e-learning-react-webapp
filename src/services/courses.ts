@@ -138,12 +138,11 @@ const CoursesService = {
 		};
 	},
 	create: async (course: FormData): Promise<void> => {
-		await omniAxios(CoursesRoutes.courses, course , HttpMethods.POST,{
-			additionalHeaders:{
+		await omniAxios(CoursesRoutes.courses, course, HttpMethods.POST, {
+			additionalHeaders: {
 				'Content-Type': 'multipart/form-data',
-			}
-		}
-			);
+			},
+		});
 	},
 	uploadContent: async (
 		courseContent: CourseUploadContentOmniModel

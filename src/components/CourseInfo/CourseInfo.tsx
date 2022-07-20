@@ -32,16 +32,14 @@ const CourseInfo = (props: CourseInfoProps) => {
 					{/* Student count */}
 					<div className={clsx(styles.courseStat, 'mr-4')}>
 						<MdSchool className='mr-1' />
-						{`${courseData?.numberOfStudents ?? 0} student${
-							courseData?.numberOfStudents === 1 ? '' : 's'
-						}`}
+						{`${courseData?.numberOfStudents ?? 0} student${courseData?.numberOfStudents === 1 ? '' : 's'
+							}`}
 					</div>
 					{/* Teacher count */}
 					<div className={clsx(styles.courseStat)}>
 						<FaChalkboardTeacher className='mr-1' />
-						{`${courseData?.numberOfTeachers ?? 0} teacher${
-							courseData?.numberOfTeachers === 1 ? '' : 's'
-						}`}
+						{`${courseData?.numberOfTeachers ?? 0} teacher${courseData?.numberOfTeachers === 1 ? '' : 's'
+							}`}
 					</div>
 				</div>
 
@@ -53,12 +51,12 @@ const CourseInfo = (props: CourseInfoProps) => {
 
 				{/* Rating */}
 				<div className={clsx(styles.courseRating)}>
-					{courseData?.data.rating ?? 0}
+					{(courseData?.data.rating === -1 || courseData?.data.rating === undefined) ? 0 : courseData?.data.rating}
 					<div className='ml-2'>
 						<Rate
 							allowHalf
 							disabled
-							defaultValue={courseData?.data.rating ?? 0}
+							defaultValue={(courseData?.data.rating === -1 || courseData?.data.rating === undefined) ? 0 : courseData?.data.rating}
 						/>
 					</div>
 				</div>
